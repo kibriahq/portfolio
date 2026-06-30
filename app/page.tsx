@@ -151,9 +151,9 @@ void main() {
 
 
   useEffect(() => {
-    // Set target date once on mount (45 days from now)
-    const launchDate = new Date();
-    launchDate.setDate(launchDate.getDate() + 15);
+    // Set target date once on mount (15 July 2026)
+    const launchDate = new Date('2026-07-15T00:00:00');
+    // launchDate.setDate(launchDate.getDate() + 15);
 
     function refresh() {
       const now = new Date().getTime();
