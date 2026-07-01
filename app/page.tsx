@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 
 export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [timeLeft, setTimeLeft] = useState({ days: "00", hours: "00", minutes: "00", seconds: "00" });
+  const [timeLeft, setTimeLeft] = useState({
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,22 +19,23 @@ export default function Home() {
     // This fires on initial layout and whenever the element is resized.
     function syncSize() {
       if (!canvas) return;
-      const w = canvas.clientWidth  || 1280;
+      const w = canvas.clientWidth || 1280;
       const h = canvas.clientHeight || 720;
       if (canvas.width !== w || canvas.height !== h) {
-        canvas.width  = w;
+        canvas.width = w;
         canvas.height = h;
       }
     }
 
     let resizeObserver: ResizeObserver | null = null;
-    if (typeof ResizeObserver !== 'undefined') {
+    if (typeof ResizeObserver !== "undefined") {
       resizeObserver = new ResizeObserver(syncSize);
       resizeObserver.observe(canvas);
     }
     syncSize();
 
-    const gl = (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')) as WebGLRenderingContext | null;
+    const gl = (canvas.getContext("webgl") ||
+      canvas.getContext("experimental-webgl")) as WebGLRenderingContext | null;
     if (!gl) return;
 
     const vs = `attribute vec2 a_position;
@@ -92,15 +97,19 @@ void main() {
 
     const buf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+      gl.STATIC_DRAW,
+    );
 
-    const pos = gl.getAttribLocation(prog, 'a_position');
+    const pos = gl.getAttribLocation(prog, "a_position");
     gl.enableVertexAttribArray(pos);
     gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
 
-    const uTime = gl.getUniformLocation(prog, 'u_time');
-    const uRes = gl.getUniformLocation(prog, 'u_resolution');
-    const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+    const uTime = gl.getUniformLocation(prog, "u_time");
+    const uRes = gl.getUniformLocation(prog, "u_resolution");
+    const uMouse = gl.getUniformLocation(prog, "u_mouse");
 
     // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
     // Shaders that need normalized coords should use: u_mouse / u_resolution.
@@ -117,13 +126,13 @@ void main() {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     let animationFrameId: number;
 
     function render(t: number) {
       if (!canvas || !gl) return;
-      if (typeof ResizeObserver === 'undefined') syncSize();
+      if (typeof ResizeObserver === "undefined") syncSize();
       gl.viewport(0, 0, canvas.width, canvas.height);
       if (uTime) gl.uniform1f(uTime, t * 0.001);
       if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
@@ -135,7 +144,7 @@ void main() {
     render(0);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
       if (resizeObserver) {
         resizeObserver.disconnect();
       }
@@ -149,10 +158,9 @@ void main() {
     };
   }, []);
 
-
   useEffect(() => {
     // Set target date once on mount (15 July 2026)
-    const launchDate = new Date('2026-07-15T00:00:00');
+    const launchDate = new Date("2026-07-15T00:00:00");
     // launchDate.setDate(launchDate.getDate() + 15);
 
     function refresh() {
@@ -170,10 +178,10 @@ void main() {
       const s = Math.floor((diff % (1000 * 60)) / 1000);
 
       setTimeLeft({
-        days: d.toString().padStart(2, '0'),
-        hours: h.toString().padStart(2, '0'),
-        minutes: m.toString().padStart(2, '0'),
-        seconds: s.toString().padStart(2, '0'),
+        days: d.toString().padStart(2, "0"),
+        hours: h.toString().padStart(2, "0"),
+        minutes: m.toString().padStart(2, "0"),
+        seconds: s.toString().padStart(2, "0"),
       });
     }
 
@@ -182,7 +190,7 @@ void main() {
 
     // Atmospheric micro-interactions
     const handleMouseMove = (e: MouseEvent) => {
-      const cards = document.querySelectorAll('.glass-card');
+      const cards = document.querySelectorAll(".glass-card");
       const x = e.clientX;
       const y = e.clientY;
 
@@ -195,127 +203,221 @@ void main() {
         const dy = y - cy;
 
         htmlCard.style.transform = `perspective(1000px) rotateX(${dy * 0.05}deg) rotateY(${dx * -0.05}deg)`;
-        htmlCard.style.boxShadow = `0 20px 60px -10px rgba(${dx > 0 ? '255, 140, 0' : '140, 120, 255'}, 0.2)`;
+        htmlCard.style.boxShadow = `0 20px 60px -10px rgba(${dx > 0 ? "255, 140, 0" : "140, 120, 255"}, 0.2)`;
       });
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       clearInterval(intervalId);
-      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   return (
-   <>
-   
-<div className="fixed inset-0 z-[-1]">
+    <>
+      <div className="fixed inset-0 z-[-1]">
+        <div
+          className="absolute inset-0 w-full h-full opacity-60"
+          style={{ display: "block" }}
+        >
+          <canvas
+            ref={canvasRef}
+            id="shader-canvas-ANIMATION_2"
+            style={{ display: "block", width: "100%", height: "100%" }}
+          ></canvas>
+        </div>
 
-<div className="absolute inset-0 w-full h-full opacity-60" style={{display:"block"}}>
-<canvas ref={canvasRef} id="shader-canvas-ANIMATION_2" style={{display:"block", width:"100%", height:"100%"}}></canvas>
+        <div className="grid-overlay absolute inset-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/20 via-transparent to-[#0B0B0B]"></div>
+      </div>
 
-</div>
+      <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-glass-fill border-b border-glass-border">
+        <nav className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
+          <div className="font-display text-body-lg font-bold text-text-primary tracking-tighter">
+            kibria.dev
+          </div>
+          <div className="hidden md:flex gap-8 items-center">
+            <a
+              className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300"
+              href="#"
+            >
+              Work
+            </a>
+            <a
+              className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300"
+              href="#"
+            >
+              Labs
+            </a>
+            <a
+              className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300"
+              href="#"
+            >
+              About
+            </a>
+            <button className="bg-primary text-on-primary font-body-md font-bold px-6 py-2 rounded-full scale-95 active:scale-90 transition-transform">
+              Connect
+            </button>
+          </div>
+        </nav>
+      </header>
+      <main className="relative pt-32 pb-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center min-h-screen max-w-container-max mx-auto text-center">
+        <section className="fade-in stagger-1 max-w-3xl mb-16">
+          <span className="font-label-sm text-primary uppercase tracking-widest mb-6 block">
+            Coming Soon
+          </span>
+          <h1 className="font-display text-headline-lg-mobile md:text-display text-text-primary mb-6 text-glow leading-tight">
+            Building something <br className="hidden md:block" />
+            amazing.
+          </h1>
+          <p className="font-body-lg text-text-secondary max-w-xl mx-auto">
+            A new portfolio and digital experience is currently under
+            development. Stay tuned for the launch and a deeper look into my
+            technical journey.
+          </p>
+        </section>
 
-<div className="grid-overlay absolute inset-0"></div>
-<div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/20 via-transparent to-[#0B0B0B]"></div>
-</div>
-
-<header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-glass-fill border-b border-glass-border">
-<nav className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
-<div className="font-display text-body-lg font-bold text-text-primary tracking-tighter">
-                kibria.dev
+        <section className="fade-in stagger-2 w-full max-w-2xl mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
+            <div className="glass-card p-6 rounded-2xl flex flex-col items-center">
+              <span
+                className="font-display text-headline-lg md:text-display text-primary leading-none"
+                id="days"
+              >
+                {timeLeft.days}
+              </span>
+              <span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">
+                Days
+              </span>
             </div>
-<div className="hidden md:flex gap-8 items-center">
-<a className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300" href="#">Work</a>
-<a className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300" href="#">Labs</a>
-<a className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300" href="#">About</a>
-<button className="bg-primary text-on-primary font-body-md font-bold px-6 py-2 rounded-full scale-95 active:scale-90 transition-transform">
-                    Connect
-                </button>
-</div>
-</nav>
-</header>
-<main className="relative pt-32 pb-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center min-h-screen max-w-container-max mx-auto text-center">
-
-<section className="fade-in stagger-1 max-w-3xl mb-16">
-<span className="font-label-sm text-primary uppercase tracking-widest mb-6 block">Coming Soon</span>
-<h1 className="font-display text-headline-lg-mobile md:text-display text-text-primary mb-6 text-glow leading-tight">
-                Building something <br className="hidden md:block"/>amazing.
-            </h1>
-<p className="font-body-lg text-text-secondary max-w-xl mx-auto">
-                A new portfolio and digital experience is currently under development. Stay tuned for the launch and a deeper look into my technical journey.
-            </p>
-</section>
-
-<section className="fade-in stagger-2 w-full max-w-2xl mb-16">
-<div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
-<div className="glass-card p-6 rounded-2xl flex flex-col items-center">
-<span className="font-display text-headline-lg md:text-display text-primary leading-none" id="days">{timeLeft.days}</span>
-<span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">Days</span>
-</div>
-<div className="glass-card p-6 rounded-2xl flex flex-col items-center">
-<span className="font-display text-headline-lg md:text-display text-primary leading-none" id="hours">{timeLeft.hours}</span>
-<span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">Hours</span>
-</div>
-<div className="glass-card p-6 rounded-2xl flex flex-col items-center">
-<span className="font-display text-headline-lg md:text-display text-primary leading-none" id="minutes">{timeLeft.minutes}</span>
-<span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">Minutes</span>
-</div>
-<div className="glass-card p-6 rounded-2xl flex flex-col items-center">
-<span className="font-display text-headline-lg md:text-display text-primary leading-none" id="seconds">{timeLeft.seconds}</span>
-<span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">Seconds</span>
-</div>
-</div>
-</section>
-
-<section className="fade-in stagger-3 w-full max-w-lg mb-20">
-<div className="flex flex-col md:flex-row gap-4 items-center justify-center p-2 rounded-full glass-card border border-glass-border">
-<input className="bg-transparent border-none focus:ring-0 text-body-md text-text-primary w-full md:w-auto flex-grow px-6 py-3 placeholder:text-text-secondary" placeholder="Enter your email" type="email" disabled={true}/>
-<button className="bg-text-primary text-background font-body-md font-bold px-8 py-3 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 w-full md:w-auto shadow-xl shadow-primary/10">
-                    Notify Me
-                </button>
-</div>
-<div className="mt-8 flex gap-6 justify-center">
-<a className="flex items-center gap-2 font-body-md text-text-secondary hover:text-text-primary transition-colors group" href="#">
-<span className="material-symbols-outlined text-[20px]">code</span>
-                    GitHub
-                    <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-</section>
-
-<section className="fade-in stagger-4 flex gap-8 mb-12">
-<a aria-label="GitHub" className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300" href="#">
-<span className="material-symbols-outlined">terminal</span>
-</a>
-<a aria-label="LinkedIn" className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300" href="#">
-<span className="material-symbols-outlined">person</span>
-</a>
-<a aria-label="X" className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300" href="#">
-<span className="material-symbols-outlined">close</span>
-</a>
-<a aria-label="Email" className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300" href="#">
-<span className="material-symbols-outlined">mail</span>
-</a>
-</section>
-</main>
-
-<footer className="w-full py-12 border-t border-glass-border bg-glass-fill/20">
-<div className="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
-<div className="font-display text-body-md font-bold text-text-primary">
-                kibria.dev
+            <div className="glass-card p-6 rounded-2xl flex flex-col items-center">
+              <span
+                className="font-display text-headline-lg md:text-display text-primary leading-none"
+                id="hours"
+              >
+                {timeLeft.hours}
+              </span>
+              <span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">
+                Hours
+              </span>
             </div>
-<div className="font-label-sm text-text-secondary text-center md:text-left">
-                © 2026 kibria.dev | Built with precision and a lot of coffee.
+            <div className="glass-card p-6 rounded-2xl flex flex-col items-center">
+              <span
+                className="font-display text-headline-lg md:text-display text-primary leading-none"
+                id="minutes"
+              >
+                {timeLeft.minutes}
+              </span>
+              <span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">
+                Minutes
+              </span>
             </div>
-<div className="flex gap-6">
-<a className="font-label-sm text-text-secondary hover:text-primary transition-colors" href="#">Twitter</a>
-<a className="font-label-sm text-text-secondary hover:text-primary transition-colors" href="#">GitHub</a>
-<a className="font-label-sm text-text-secondary hover:text-primary transition-colors" href="#">LinkedIn</a>
-</div>
-</div>
-</footer>
-   </>
+            <div className="glass-card p-6 rounded-2xl flex flex-col items-center">
+              <span
+                className="font-display text-headline-lg md:text-display text-primary leading-none"
+                id="seconds"
+              >
+                {timeLeft.seconds}
+              </span>
+              <span className="font-label-sm text-text-secondary mt-2 uppercase tracking-tighter">
+                Seconds
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section className="fade-in stagger-3 w-full max-w-lg mb-20">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-center p-2 rounded-full glass-card border border-glass-border">
+            <input
+              className="bg-transparent border-none focus:ring-0 text-body-md text-text-primary w-full md:w-auto flex-grow px-6 py-3 placeholder:text-text-secondary"
+              placeholder="Enter your email"
+              type="email"
+              disabled={true}
+            />
+            <button className="bg-text-primary text-background font-body-md font-bold px-8 py-3 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 w-full md:w-auto shadow-xl shadow-primary/10">
+              Notify Me
+            </button>
+          </div>
+          <div className="mt-8 flex gap-6 justify-center">
+            <a
+              className="flex items-center gap-2 font-body-md text-text-secondary hover:text-text-primary transition-colors group"
+              href="#"
+            >
+              <span className="material-symbols-outlined text-[20px]">
+                code
+              </span>
+              GitHub
+              <span className="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">
+                arrow_forward
+              </span>
+            </a>
+          </div>
+        </section>
+
+        <section className="fade-in stagger-4 flex gap-8 mb-12">
+          <a
+            aria-label="GitHub"
+            className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300"
+            href="#"
+          >
+            <span className="material-symbols-outlined">terminal</span>
+          </a>
+          <a
+            aria-label="LinkedIn"
+            className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300"
+            href="#"
+          >
+            <span className="material-symbols-outlined">person</span>
+          </a>
+          <a
+            aria-label="X"
+            className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300"
+            href="#"
+          >
+            <span className="material-symbols-outlined">close</span>
+          </a>
+          <a
+            aria-label="Email"
+            className="w-12 h-12 flex items-center justify-center glass-card rounded-full text-text-secondary hover:text-primary hover:border-primary/40 transition-all duration-300"
+            href="#"
+          >
+            <span className="material-symbols-outlined">mail</span>
+          </a>
+        </section>
+      </main>
+
+      <footer className="w-full py-12 border-t border-glass-border bg-glass-fill/20">
+        <div className="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
+          <div className="font-display text-body-md font-bold text-text-primary">
+            kibria.dev
+          </div>
+          <div className="font-label-sm text-text-secondary text-center md:text-left">
+            © 2026 kibria.dev | Built with precision and a lot of coffee.
+          </div>
+          <div className="flex gap-6">
+            <a
+              className="font-label-sm text-text-secondary hover:text-primary transition-colors"
+              href="#"
+            >
+              Twitter
+            </a>
+            <a
+              className="font-label-sm text-text-secondary hover:text-primary transition-colors"
+              href="#"
+            >
+              GitHub
+            </a>
+            <a
+              className="font-label-sm text-text-secondary hover:text-primary transition-colors"
+              href="#"
+            >
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
