@@ -1,5 +1,6 @@
 "use client";
 
+import Nav from "@/components/Nav";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -230,38 +231,11 @@ void main() {
         </div>
 
         <div className="grid-overlay absolute inset-0"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0B0B]/20 via-transparent to-[#0B0B0B]"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-[#0B0B0B]/20 via-transparent to-[#0B0B0B]"></div>
       </div>
 
       <header className="fixed top-0 w-full z-50 backdrop-blur-xl bg-glass-fill border-b border-glass-border">
-        <nav className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
-          <div className="font-display text-body-lg font-bold text-text-primary tracking-tighter">
-            kibria.dev
-          </div>
-          <div className="hidden md:flex gap-8 items-center">
-            <a
-              className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300"
-              href="#"
-            >
-              Work
-            </a>
-            <a
-              className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300"
-              href="#"
-            >
-              Labs
-            </a>
-            <a
-              className="font-body-md text-text-secondary hover:text-text-primary transition-colors duration-300"
-              href="#"
-            >
-              About
-            </a>
-            <button className="bg-primary text-on-primary font-body-md font-bold px-6 py-2 rounded-full scale-95 active:scale-90 transition-transform">
-              Connect
-            </button>
-          </div>
-        </nav>
+        <Nav />
       </header>
       <main className="relative pt-32 pb-16 px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center min-h-screen max-w-container-max mx-auto text-center">
         <section className="fade-in stagger-1 max-w-3xl mb-16">
