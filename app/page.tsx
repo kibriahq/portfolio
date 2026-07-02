@@ -305,7 +305,7 @@ void main() {
         <section className="fade-in stagger-3 w-full max-w-lg mb-20">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-center p-2 rounded-full glass-card border border-glass-border">
             <input
-              className="bg-transparent border-none focus:ring-0 text-body-md text-text-primary w-full md:w-auto flex-grow px-6 py-3 placeholder:text-text-secondary"
+              className="bg-transparent border-none focus:ring-0 text-body-md text-text-primary w-full md:w-auto grow px-6 py-3 placeholder:text-text-secondary"
               placeholder="Enter your email"
               type="email"
               disabled={true}

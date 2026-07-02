@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kibria | Full Stack Developer | React Next.js Laravel Node.js",
-  description: "Passionate Full Stack Developer crafting clean, scalable, and user-centric web applications with modern technologies.",
+  title: "Kibria | Full Stack Developer (Next.js, React, Node.js & Laravel)",
+  description: "Full-stack developer building fast, scalable web applications with Next.js, React, Node.js, Laravel, Supabase, MySQL, PostgreSQL & MongoDB.",
   authors: [{ name: "Kibria" }],
   keywords: ["Full Stack Developer", "React", "Next.js", "Laravel", "Node.js", "Portfolio", "Web Developer", "Create Website", "React developer", "Next js developer", "Laravel developer", "Node js developer", "Software Engineer", "MERN Stack Developer"]
 };
