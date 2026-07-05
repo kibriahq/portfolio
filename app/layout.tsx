@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     template: "%s | Md Kibria",
   },
   description:
-    "Full Stack Developer specializing in Next.js, React, Node.js, and Laravel. Building fast, scalable web applications with modern technologies.",
+    "Building fast, scalable web applications using Next.js, React, Node.js, Laravel, Supabase, MySQL, PostgreSQL, and MongoDB.",
   authors: [{ name: "Md Kibria" }],
   keywords: [
     "Full Stack Developer",
-    "React",
     "Next.js",
+    "React",
     "Laravel",
     "Node.js",
     "Portfolio",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Md Kibria | Full Stack Developer",
     description:
-      "Full Stack Developer specializing in Next.js, React, Node.js, and Laravel. Building fast, scalable web applications with modern technologies.",
+      "Building fast, scalable web applications using Next.js, React, Node.js, Laravel, Supabase, MySQL, PostgreSQL, and MongoDB.",
     url: "https://kibria.dev",
     siteName: "Md Kibria",
     images: [
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Md Kibria | Full Stack Developer",
     description:
-      "Full Stack Developer specializing in Next.js, React, Node.js, and Laravel. Building fast, scalable web applications with modern technologies.",
+      "Building fast, scalable web applications using Next.js, React, Node.js, Laravel, Supabase, MySQL, PostgreSQL, and MongoDB.",
     images: ["/og.png"],
     creator: "@kibria_dev",
   },
