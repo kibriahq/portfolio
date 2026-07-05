@@ -1,5 +1,4 @@
 const websiteSchema = {
-  "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://kibria.dev/#website",
   url: "https://kibria.dev",
@@ -18,7 +17,6 @@ const websiteSchema = {
 };
 
 const personSchema = {
-  "@context": "https://schema.org",
   "@type": "Person",
   "@id": "https://kibria.dev/#person",
   name: "Md Kibria",
