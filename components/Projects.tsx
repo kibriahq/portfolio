@@ -17,13 +17,13 @@ export default function Projects() {
       className="mx-auto max-w-container-max scroll-mt-24 px-margin-mobile py-24 md:px-margin-desktop"
     >
       <Reveal className="mb-12 max-w-2xl">
-        <span className="font-mono text-label-sm uppercase tracking-widest text-primary">
+        <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
           Featured Work
         </span>
-        <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg">
+        <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center md:text-left">
           Projects that shipped &amp; scaled
         </h2>
-        <p className="mt-4 font-sans text-body-lg text-muted">
+        <p className="mt-4 font-sans text-body-lg text-muted text-center md:text-left">
           A selection of my recent builds. Each one framed by the problem, the
           solution, and the measurable final result.
         </p>

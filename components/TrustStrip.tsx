@@ -15,7 +15,7 @@ export default function TrustStrip() {
         {/* Stats */}
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
+            <div key={stat.label} className="text-center min-w-44">
               <div className="font-display text-headline font-bold text-foreground">
                 {stat.value}
               </div>

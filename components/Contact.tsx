@@ -44,21 +44,21 @@ export default function Contact() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Closing pitch + socials */}
           <div>
-            <span className="font-mono text-label-sm uppercase tracking-widest text-primary">
+            <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
               Contact
             </span>
-            <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg">
+            <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center md:text-left">
               Let&apos;s build something great together
             </h2>
-            <p className="mt-4 font-sans text-body-lg text-muted">
+            <p className="mt-4 font-sans text-body-lg text-muted text-center md:text-left">
               Have a project in mind or just want to talk through an idea? Send a
               message and I&apos;ll get back to you within 24 hours.
             </p>
 
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mt-8 flex items-center md:items-start flex-col gap-4">
               <a
                 href={`mailto:${SITE.email}`}
-                className="inline-flex w-fit items-center gap-2 rounded-full bg-primary-strong px-6 py-3 font-sans text-body-md font-semibold text-on-primary transition-transform hover:scale-[1.03] active:scale-95"
+                className="inline-flex w-full md:w-fit items-center gap-2 rounded-full bg-primary-strong px-6 py-3 font-sans text-body-md font-semibold text-on-primary transition-transform hover:scale-[1.03] active:scale-95 justify-center md:justify-start"
               >
                 <Mail className="h-4 w-4" />
                 Email Me
@@ -72,7 +72,7 @@ export default function Contact() {
             </div>
 
             {/* Socials */}
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex justify-center md:justify-start gap-3">
               {SOCIAL_LINKS.map((s) => (
                 <a
                   key={s.label}

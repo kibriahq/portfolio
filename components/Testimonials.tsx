@@ -6,13 +6,13 @@ export default function Testimonials() {
   return (
     <section className="mx-auto max-w-container-max px-margin-mobile py-24 md:px-margin-desktop">
       <Reveal className="mb-12 max-w-2xl">
-        <span className="font-mono text-label-sm uppercase tracking-widest text-primary">
+        <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
           Testimonials
         </span>
-        <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg">
+        <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center md:text-left">
           What clients say
         </h2>
-        <p className="mt-4 font-sans text-body-lg text-muted">
+        <p className="mt-4 font-sans text-body-lg text-muted text-center md:text-left">
           <span className="text-muted/70">
             I always try to make my clients fully satisfied with my work. Here is some feedback.
           </span>

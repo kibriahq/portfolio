@@ -14,14 +14,14 @@ export default function Skills() {
       id="skills"
       className="mx-auto max-w-container-max scroll-mt-24 px-margin-mobile py-24 md:px-margin-desktop"
     >
-      <Reveal className="mb-12 max-w-2xl">
-        <span className="font-mono text-label-sm uppercase tracking-widest text-primary">
+      <Reveal className="mb-12 max-w-2xl ">
+        <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
           Toolkit
         </span>
-        <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg">
+        <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center md:text-left">
           Skills &amp; technologies
         </h2>
-        <p className="mt-4 font-sans text-body-lg text-muted">
+        <p className="mt-4 font-sans text-body-lg text-muted text-center md:text-left">
           Here are some of my core technical skills and the tools I use to build
           fast, reliable web applications.
         </p>

@@ -57,13 +57,13 @@ export default function About() {
 
         {/* Bio + approach */}
         <Reveal delay={0.1}>
-          <span className="font-mono text-label-sm uppercase tracking-widest text-primary">
+          <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
             About
           </span>
-          <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg">
+          <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center md:text-left">
             A developer — <br/> who ships, and sticks around
           </h2>
-          <p className="mt-4 font-sans text-body-lg text-muted">
+          <p className="mt-4 font-sans text-body-lg text-muted text-center md:text-left">
             I&apos;m {SITE.name}, a full-stack developer with 3+ years building
             web applications for startups and agencies worldwide. I care about
             fast load times, clean architecture, and code the next developer can
