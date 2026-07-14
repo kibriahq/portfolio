@@ -1,62 +1,38 @@
-import { Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./BrandIcons";
-import { NAV_LINKS, SITE, SOCIALS } from "@/lib/data";
+import { SITE, SOCIALS } from "@/lib/data";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-surface/30">
-      <div className="mx-auto flex max-w-container-max flex-col items-center justify-between gap-6 px-margin-mobile py-10 md:flex-row md:px-margin-desktop">
-        <div className="text-center md:text-left">
-          <div className="font-display text-body-lg font-bold text-foreground">
+    <>
+      <footer className="w-full py-12 border-t border-glass-border bg-glass-fill/20">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
+          <div className="order-1 md:order-1 justify-self-center md:justify-self-start font-display text-body-lg font-bold text-text-primary">
             {SITE.brand}
           </div>
-          <p className="mt-1 font-sans text-body-md text-muted">
-            © {new Date().getFullYear()} {SITE.name}. Full-stack web developer.
-          </p>
-        </div>
-
-        {/* Quick links */}
-        <nav className="flex flex-wrap items-center justify-center gap-6">
-          {NAV_LINKS.map((link) => (
+          <div className="order-3 md:order-2 justify-self-center font-mono text-sm text-center md:text-left">
+            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+          </div>
+          <div className="order-2 md:order-3 justify-self-center md:justify-self-end flex gap-6">
             <a
-              key={link.href}
-              href={link.href}
-              className="font-sans text-body-md text-muted transition-colors hover:text-foreground"
+              className="font-mono text-sm hover:text-primary transition-colors"
+              href={`mailto:${SITE.email}`}
             >
-              {link.label}
+              Mail
             </a>
-          ))}
-        </nav>
-
-        {/* Socials */}
-        <div className="flex gap-3">
-          <a
-            href={SOCIALS.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="text-muted transition-colors hover:text-primary"
-          >
-            <GithubIcon className="h-5 w-5" />
-          </a>
-          <a
-            href={SOCIALS.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="text-muted transition-colors hover:text-primary"
-          >
-            <LinkedinIcon className="h-5 w-5" />
-          </a>
-          <a
-            href={`mailto:${SITE.email}`}
-            aria-label="Email"
-            className="text-muted transition-colors hover:text-primary"
-          >
-            <Mail className="h-5 w-5" />
-          </a>
+            <a
+              className="font-mono text-sm hover:text-primary transition-colors"
+              href={SOCIALS.github}
+            >
+              GitHub
+            </a>
+            <a
+              className="font-mono text-sm hover:text-primary transition-colors"
+              href={SOCIALS.linkedin}
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
