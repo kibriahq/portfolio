@@ -14,7 +14,7 @@ export default function Testimonials() {
         </h2>
         <p className="mt-4 font-sans text-body-lg text-muted">
           <span className="text-muted/70">
-            [Placeholder testimonials — replace with real client feedback.]
+            I always try to make my clients fully satisfied with my work. Here is some feedback.
           </span>
         </p>
       </Reveal>
