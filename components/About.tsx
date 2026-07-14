@@ -27,7 +27,7 @@ export default function About() {
       id="about"
       className="mx-auto max-w-container-max scroll-mt-24 px-margin-mobile py-24 md:px-margin-desktop"
     >
-      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[280px_1fr]">
+      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[300px_1fr]">
         {/* Headshot */}
         <Reveal className="mx-auto">
           <div className="relative">
@@ -43,7 +43,14 @@ export default function About() {
               alt={`Portrait of ${SITE.name}`}
               width={240}
               height={240}
-              className="relative h-52 w-52 rounded-full border border-border-strong object-cover md:h-60 md:w-60"
+              className="relative h-52 w-52 rounded-full border border-border-strong object-cover md:hidden"
+            />
+            <Image
+              src="/kibria-portrait.png"
+              alt={`Portrait of ${SITE.name}`}
+              width={240}
+              height={240}
+              className="hidden glass-card rounded-2xl border border-border-strong object-cover md:block md:h-[550px] md:w-[300px]"
             />
           </div>
         </Reveal>
@@ -54,23 +61,20 @@ export default function About() {
             About
           </span>
           <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg">
-            A developer who ships, and sticks around
+            A developer — <br/> who ships, and sticks around
           </h2>
           <p className="mt-4 font-sans text-body-lg text-muted">
-            I&apos;m {SITE.name}, a full-stack developer with 5+ years building
+            I&apos;m {SITE.name}, a full-stack developer with 3+ years building
             web applications for startups and agencies worldwide. I care about
             fast load times, clean architecture, and code the next developer can
-            actually read.{" "}
-            <span className="text-muted/70">
-              [Placeholder bio — replace with your story.]
-            </span>
+            actually read. I have a strong foundation in both frontend and backend technologies, with experience in building scalable and maintainable web applications. I am a quick learner and can pick up new technologies as needed. I am passionate about building high-quality software and delivering value to my clients.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {APPROACH.map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl border border-border bg-surface/40 p-4"
+                className="glass-card rounded-xl border border-border p-4"
               >
                 <item.icon className="h-5 w-5 text-primary" />
                 <h3 className="mt-3 font-display text-body-md font-semibold text-foreground">
