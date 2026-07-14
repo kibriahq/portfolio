@@ -33,7 +33,7 @@ export default function Contact() {
   };
 
   const inputClasses =
-    "w-full rounded-xl border border-border bg-background/60 px-4 py-3 font-sans text-body-md text-foreground placeholder:text-muted/60 transition-colors focus:border-primary focus:outline-none";
+    "w-full rounded-md border border-border bg-background/60 px-4 py-3 font-sans text-body-md text-foreground placeholder:text-muted/60 transition-colors focus:border-primary focus:outline-none";
 
   return (
     <section
@@ -63,12 +63,12 @@ export default function Contact() {
                 <Mail className="h-4 w-4" />
                 Email Me
               </a>
-              <a
-                href={SITE.calendly}
+              <label
+              htmlFor="name"
                 className="font-sans text-body-md text-muted transition-colors hover:text-primary"
               >
                 or schedule a call →
-              </a>
+              </label>
             </div>
 
             {/* Socials */}
@@ -95,7 +95,7 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form action="https://formspree.io/f/manwkrpg" method="POST" className="flex flex-col gap-4">
             <div>
               <label
                 htmlFor="name"
