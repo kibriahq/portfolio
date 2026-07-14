@@ -11,18 +11,27 @@
 
 :root {
   /* --- Dark theme (default) --- */
-  --background: #0a0a0b; /* deep near-black base (NOT pure black) */
-  --surface: #151517; /* card / section surface */
-  --surface-2: #1c1c1f; /* elevated surface */
-  --foreground: #e5e5e5; /* headings / primary text (off-white) */
-  --muted: #a1a1aa; /* secondary / body text */
-  --border: rgba(255, 255, 255, 0.08); /* subtle 1px borders */
+  --background: #0a0a0b;
+  /* deep near-black base (NOT pure black) */
+  --surface: #151517;
+  /* card / section surface */
+  --surface-2: #1c1c1f;
+  /* elevated surface */
+  --foreground: #e5e5e5;
+  /* headings / primary text (off-white) */
+  --muted: #a1a1aa;
+  /* secondary / body text */
+  --border: rgba(255, 255, 255, 0.08);
+  /* subtle 1px borders */
   --border-strong: rgba(255, 255, 255, 0.16);
 
   /* single vibrant accent (electric indigo/violet) used sparingly */
-  --primary: #8b8bff; /* accent for links / highlights (AA on dark) */
-  --primary-strong: #5d5dff; /* solid accent for CTA buttons */
-  --on-primary: #ffffff; /* text on solid accent */
+  --primary: #8b8bff;
+  /* accent for links / highlights (AA on dark) */
+  --primary-strong: #5d5dff;
+  /* solid accent for CTA buttons */
+  --on-primary: #ffffff;
+  /* text on solid accent */
 
   --glass-fill: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
@@ -40,7 +49,8 @@
   --border: rgba(0, 0, 0, 0.08);
   --border-strong: rgba(0, 0, 0, 0.16);
 
-  --primary: #4f46e5; /* indigo-600, AA on light backgrounds */
+  --primary: #4f46e5;
+  /* indigo-600, AA on light backgrounds */
   --primary-strong: #4f46e5;
   --on-primary: #ffffff;
 
@@ -122,7 +132,8 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px; /* offset for sticky navbar on anchor jumps */
+  scroll-padding-top: 96px;
+  /* offset for sticky navbar on anchor jumps */
 }
 
 body {
@@ -166,7 +177,9 @@ body {
 
 /* Glassy card surface used for cards & floating panels */
 .glass-card {
-  background: var(--surface);
+  background: rgba(21, 21, 23, 0.45); /* --surface with opacity */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--border);
   transition:
     transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -193,10 +206,12 @@ body {
   html {
     scroll-behavior: auto;
   }
+
   [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
   }
+
   *,
   *::before,
   *::after {
