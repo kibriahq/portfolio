@@ -82,7 +82,7 @@ export default function Hero() {
       </p>
 
       {/* CTAs */}
-      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+      <div className="mt-10 flex flex-col items-center gap-4 w-full sm:w-auto sm:flex-row">
         <a
           href="#work"
           className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 font-sans text-body-md font-semibold text-on-primary transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
