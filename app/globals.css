@@ -1,160 +1,206 @@
 @import "tailwindcss";
 
-
-
-
-
+/* ==========================================================================
+   THEME TOKENS
+   Dark is the default theme (defined on :root). The `.light` class on <html>
+   overrides the raw CSS variables to switch to the light variant.
+   All Tailwind color utilities below reference these variables, so every
+   surface, text color and accent updates automatically on theme change.
+   Tweak the values here to re-brand the whole site.
+   ========================================================================== */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Dark theme (default) --- */
+  --background: #0a0a0b; /* deep near-black base (NOT pure black) */
+  --surface: #151517; /* card / section surface */
+  --surface-2: #1c1c1f; /* elevated surface */
+  --foreground: #e5e5e5; /* headings / primary text (off-white) */
+  --muted: #a1a1aa; /* secondary / body text */
+  --border: rgba(255, 255, 255, 0.08); /* subtle 1px borders */
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* single vibrant accent (electric indigo/violet) used sparingly */
+  --primary: #8b8bff; /* accent for links / highlights (AA on dark) */
+  --primary-strong: #5d5dff; /* solid accent for CTA buttons */
+  --on-primary: #ffffff; /* text on solid accent */
+
+  --glass-fill: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --glow: rgba(93, 93, 255, 0.28);
+}
+
+.light {
+  /* --- Light theme --- */
+  --background: #f6f6f8;
+  --surface: #ffffff;
+  --surface-2: #f0f0f3;
+  --foreground: #18181b;
+  --muted: #52525b;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.16);
+
+  --primary: #4f46e5; /* indigo-600, AA on light backgrounds */
+  --primary-strong: #4f46e5;
+  --on-primary: #ffffff;
+
+  --glass-fill: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --grid-line: rgba(0, 0, 0, 0.05);
+  --glow: rgba(79, 70, 229, 0.22);
 }
 
 @theme inline {
-  --color-on-primary-container: #fefaff;
-  --color-text-secondary: #A1A1AA;
-  --color-tertiary-container: #bf5400;
-  --color-error: #ffb4ab;
-  --color-on-primary-fixed-variant: #2a21d2;
-  --color-tertiary-fixed: #ffdbca;
-  --color-inverse-primary: #4644e9;
-  --color-secondary-fixed: #f0dbff;
-  --color-tertiary-fixed-dim: #ffb690;
-  --color-surface: #131313;
-  --color-secondary-container: #6f00be;
-  --color-on-tertiary: #542100;
-  --color-surface-container-low: #1c1b1b;
-  --color-surface-dim: #131313;
-  --color-primary-fixed-dim: #c1c1ff;
-  --color-tertiary: #ffb690;
-  --color-on-error-container: #ffdad6;
-  --color-glass-fill: rgba(255, 255, 255, 0.03);
-  --color-primary: #c1c1ff;
-  --color-background: #131313;
-  --color-on-tertiary-container: #fffbfa;
-  --color-on-secondary-fixed-variant: #6900b3;
-  --color-outline-variant: #464555;
-  --color-surface-container-high: #2a2a2a;
-  --color-on-secondary-fixed: #2c0051;
-  --color-subtle-glow: rgba(93, 93, 255, 0.15);
-  --color-on-secondary-container: #d6a9ff;
-  --color-on-primary: #1400a8;
-  --color-text-primary: #FFFFFF;
-  --color-outline: #908fa1;
-  --color-error-container: #93000a;
-  --color-on-tertiary-fixed-variant: #783200;
-  --color-primary-container: #5d5dff;
-  --color-surface-container: #201f1f;
-  --color-on-error: #690005;
-  --color-on-primary-fixed: #09006b;
-  --color-on-secondary: #490080;
-  --color-secondary: #ddb7ff;
-  --color-secondary-fixed-dim: #ddb7ff;
-  --color-surface-container-highest: #353534;
-  --color-surface-bright: #3a3939;
-  --color-on-surface: #e5e2e1;
-  --color-surface-container-lowest: #0e0e0e;
-  --color-glass-border: rgba(255, 255, 255, 0.1);
-  --color-on-surface-variant: #c6c4d8;
-  --color-surface-variant: #353534;
-  --color-inverse-on-surface: #313030;
-  --color-on-tertiary-fixed: #331100;
-  --color-on-background: #e5e2e1;
-  --color-surface-tint: #c1c1ff;
-  --color-inverse-surface: #e5e2e1;
-  --color-primary-fixed: #e1dfff;
+  /* Semantic colors -> map to theme-aware CSS variables */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-on-background: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-on-primary: var(--on-primary);
+  --color-glass-fill: var(--glass-fill);
+  --color-glass-border: var(--glass-border);
 
-  --radius: 1rem;
-  --radius-lg: 2rem;
-  --radius-xl: 3rem;
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius: 0.75rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
   --radius-full: 9999px;
 
-  --spacing-unit: 8px;
+  /* Spacing helpers */
   --spacing-container-max: 1200px;
   --spacing-gutter: 24px;
   --spacing-margin-mobile: 20px;
   --spacing-margin-desktop: 64px;
 
-  --font-display: "Geist";
-  --font-label-sm: "JetBrains Mono";
-  --font-headline-lg: "Geist";
-  --font-body-lg: "Inter";
-  --font-body-md: "Inter";
-  --font-headline-lg-mobile: "Geist";
+  /* Fonts */
+  --font-display: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", ui-monospace, monospace;
 
-  --text-display: 72px;
-  --text-display--line-height: 80px;
+  /* Type scale */
+  --text-display: 68px;
+  --text-display--line-height: 74px;
   --text-display--letter-spacing: -0.04em;
-  --text-display--font-weight: 600;
+  --text-display--font-weight: 700;
 
-  --text-label-sm: 12px;
-  --text-label-sm--line-height: 16px;
-  --text-label-sm--letter-spacing: 0.05em;
-  --text-label-sm--font-weight: 500;
-
-  --text-headline-lg: 48px;
-  --text-headline-lg--line-height: 56px;
+  --text-headline-lg: 44px;
+  --text-headline-lg--line-height: 52px;
   --text-headline-lg--letter-spacing: -0.02em;
-  --text-headline-lg--font-weight: 500;
+  --text-headline-lg--font-weight: 600;
+
+  --text-headline: 32px;
+  --text-headline--line-height: 40px;
+  --text-headline--letter-spacing: -0.02em;
+  --text-headline--font-weight: 600;
 
   --text-body-lg: 18px;
-  --text-body-lg--line-height: 28px;
-  --text-body-lg--letter-spacing: 0.01em;
+  --text-body-lg--line-height: 30px;
+  --text-body-lg--letter-spacing: 0.005em;
   --text-body-lg--font-weight: 400;
 
   --text-body-md: 16px;
-  --text-body-md--line-height: 24px;
-  --text-body-md--letter-spacing: 0.01em;
+  --text-body-md--line-height: 26px;
+  --text-body-md--letter-spacing: 0.005em;
   --text-body-md--font-weight: 400;
 
-  --text-headline-lg-mobile: 32px;
-  --text-headline-lg-mobile--line-height: 40px;
-  --text-headline-lg-mobile--letter-spacing: -0.02em;
-  --text-headline-lg-mobile--font-weight: 500;
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--letter-spacing: 0.08em;
+  --text-label-sm--font-weight: 500;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* offset for sticky navbar on anchor jumps */
 }
 
 body {
-    background-color: #0B0B0B;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
+
+::selection {
+  background-color: var(--primary-strong);
+  color: var(--on-primary);
+}
+
+/* Consistent focus ring for a11y */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
 
 .grid-overlay {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 32px 32px;
-    pointer-events: none;
-}
-
-.fade-in {
-    animation: fadeIn 1.2s ease-out forwards;
-    opacity: 0;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.stagger-1 { animation-delay: 0.2s; }
-.stagger-2 { animation-delay: 0.4s; }
-.stagger-3 { animation-delay: 0.6s; }
-.stagger-4 { animation-delay: 0.8s; }
-
-.glass-card {
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 30px rgba(93, 93, 255, 0.1);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
 }
 
 .text-glow {
-    text-shadow: 0 0 40px rgba(193, 193, 255, 0.3);
+  text-shadow: 0 0 40px var(--glow);
+}
+
+/* Glassy card surface used for cards & floating panels */
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 0 0 1px var(--glass-border), 0 20px 50px -20px var(--glow);
+}
+
+/* Reveal targets start hidden; GSAP fades/slides them in on scroll.
+   Fallback: if JS/GSAP fails, .is-visible is added and content shows. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+}
+
+/* Accessibility: honor reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
