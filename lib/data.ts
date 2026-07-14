@@ -37,17 +37,18 @@ export const HERO_ROLES = [
 
 // Trust strip stats
 export const STATS = [
-  { value: "20+", label: "Projects Delivered" },
-  { value: "5+", label: "Years Coding" },
+  { value: "17+", label: "Projects Delivered" },
+  { value: "03+", label: "Years Coding" },
   { value: "100%", label: "Client Satisfaction" },
 ];
 
 // Tech shown in the trust strip (grayscale → accent on hover)
 export const TRUST_TECH = [
+  "AI Integrate",
   "Next.js",
   "React",
-  "TypeScript",
   "Node.js",
+  "Laravel",
   "Supabase",
   "PostgreSQL",
 ];
