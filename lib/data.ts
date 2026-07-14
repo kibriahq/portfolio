@@ -113,15 +113,15 @@ export type SkillGroup = {
 export const SKILLS: SkillGroup[] = [
   {
     category: "Frontend",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "GSAP"],
+    items: ["Next.js", "React", "GSAP", "TypeScript", "Tailwind CSS"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express.js", "Laravel", "REST APIs", "Auth"],
+    items: ["Node.js", "Laravel", "Auth", "Express.js", "REST APIs"],
   },
   {
     category: "Database & Infra",
-    items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Vercel"],
+    items: ["PostgreSQL", "Supabase", "MySQL", "MongoDB", "Vercel"],
   },
 ];
 
