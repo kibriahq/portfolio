@@ -24,9 +24,8 @@ export default function Projects() {
           Projects that shipped &amp; scaled
         </h2>
         <p className="mt-4 font-sans text-body-lg text-muted">
-          A selection of recent builds. Each one framed by the problem, the
-          solution, and the measurable result.{" "}
-          <span className="text-muted/70">[Placeholder case studies]</span>
+          A selection of my recent builds. Each one framed by the problem, the
+          solution, and the measurable final result.
         </p>
       </Reveal>
 
