@@ -21,6 +21,10 @@ export default function Skills() {
         <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg">
           Skills &amp; technologies
         </h2>
+        <p className="mt-4 font-sans text-body-lg text-muted">
+          Here are some of my core technical skills and the tools I use to build
+          fast, reliable web applications.
+        </p>
       </Reveal>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
