@@ -24,17 +24,17 @@ export default function Navbar() {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-container-max items-center justify-between px-margin-mobile py-4 md:px-margin-desktop">
+      <nav className="mx-auto grid grid-cols-[1fr_1fr] md:grid-cols-[1fr_auto_1fr] max-w-container-max items-center justify-between px-margin-mobile py-4 md:px-margin-desktop">
         {/* Logo / name */}
         <a
           href="#top"
-          className="font-display text-body-lg font-bold tracking-tight text-foreground"
+          className="justify-self-start font-display text-body-lg font-bold tracking-tight text-foreground"
         >
           {SITE.brand}
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="justify-self-center hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -47,7 +47,7 @@ export default function Navbar() {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
+        <div className="justify-self-end flex items-center gap-3">
           <ThemeToggle />
           <a
             href="#contact"
@@ -77,7 +77,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 font-sans text-body-md text-muted transition-colors hover:bg-surface hover:text-foreground"
+                className="rounded-lg px-3 py-3 font-sans text-center text-body-md text-muted transition-colors hover:bg-surface hover:text-foreground"
               >
                 {link.label}
               </a>
