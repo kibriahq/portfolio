@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <TrustStrip />
-        <Projects />
+        {/* <Projects /> */}
         <Skills />
         <About />
         <Testimonials />

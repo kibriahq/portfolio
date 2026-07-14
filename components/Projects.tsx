@@ -38,7 +38,7 @@ export default function Projects() {
           >
             {/* Image placeholder */}
             <div
-              className={`relative aspect-[16/10] w-full overflow-hidden bg-gradient-to-br ${
+              className={`relative aspect-16/10 w-full overflow-hidden bg-linear-to-br ${
                 IMAGE_GRADIENTS[project.image] ?? IMAGE_GRADIENTS.violet
               }`}
             >
