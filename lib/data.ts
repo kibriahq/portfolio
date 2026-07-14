@@ -135,20 +135,20 @@ export type Testimonial = {
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Delivered ahead of schedule and communicated clearly the entire way. The app is fast and rock solid.",
-    name: "Sarah Lin",
-    role: "Founder, SaaS Startup (US)",
+      "Dear Kibria, I don't know what else I will say but at the moment, keep up the good work.",
+    name: "Chukwuebuka Emmanuel",
+    role: "Founder, Magic Hit Int (Turkey)",
   },
   {
     quote:
-      "One of the most reliable developers I've worked with on Upwork. Understood the requirements immediately.",
-    name: "Marcus Vogel",
-    role: "Product Manager (Germany)",
+      "He always co-operates and deliver on time, the quality of work is really good.",
+    name: "Shivani Verma",
+    role: "Agency Owner (India)",
   },
   {
     quote:
-      "Great communication across time zones and clean, maintainable code. Would absolutely hire again.",
-    name: "Aisha Rahman",
-    role: "Agency Owner (UAE)",
+      "Working with Kibria has been nothing short of amazing! He built my website exactly as I wanted and went far beyond my expectations...",
+    name: "Francis",
+    role: "Founder, AmazingSKF (UK)",
   },
 ];
