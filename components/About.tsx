@@ -70,13 +70,13 @@ export default function About() {
             actually read. I have a strong foundation in both frontend and backend technologies, with experience in building scalable and maintainable web applications. I am a quick learner and can pick up new technologies as needed. I am passionate about building high-quality software and delivering value to my clients.
           </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
             {APPROACH.map((item) => (
               <div
                 key={item.title}
-                className="glass-card rounded-xl border border-border p-4"
+                className="first:col-span-1 md:first:col-span-2 lg:first:col-span-1 glass-card rounded-xl border border-border p-4 flex flex-col items-center text-center sm:items-start sm:text-left"
               >
-                <item.icon className="h-5 w-5 text-primary" />
+                <item.icon className="h-7 w-7 text-primary" />
                 <h3 className="mt-3 font-display text-body-md font-semibold text-foreground">
                   {item.title}
                 </h3>
