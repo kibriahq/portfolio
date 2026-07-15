@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GlobalSchema from "@/components/schemas/GlobalSchema";
+import Cursor from "@/components/Cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -110,7 +111,10 @@ export default function RootLayout({
         />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <Cursor />
+        {children}
+      </body>
     </html>
   );
 }

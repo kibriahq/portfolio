@@ -200,6 +200,63 @@ body {
   will-change: opacity, transform;
 }
 
+/* ==========================================================================
+   CUSTOM CURSOR
+   A trailing ring + anchored dot. Only active when the body carries the
+   `.has-custom-cursor` class (set by the Cursor component on fine-pointer,
+   non-reduced-motion devices). Default cursor is hidden in that case.
+   ========================================================================== */
+
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: var(--primary);
+  box-shadow: 0 0 12px var(--glow);
+  transition: opacity 0.25s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--primary);
+  transition:
+    opacity 0.25s ease,
+    width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.cursor-ring--active {
+  width: 52px;
+  height: 52px;
+  background-color: color-mix(in srgb, var(--primary) 14%, transparent);
+  border-color: var(--primary-strong);
+}
+
+.cursor-ring--click {
+  width: 26px;
+  height: 26px;
+}
+
 /* Accessibility: honor reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
