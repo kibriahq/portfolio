@@ -33,6 +33,12 @@ export default function Cursor() {
       mouseY = e.clientY;
       // Dot tracks the pointer exactly for a crisp anchor point.
       dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      // Reveal on first movement; mouseenter doesn't fire when the pointer
+      // is already over the page at load time.
+      if (dot.style.opacity !== "1") {
+        dot.style.opacity = "1";
+        ring.style.opacity = "1";
+      }
     };
 
     // Grow the ring over interactive elements for a tactile feel.
