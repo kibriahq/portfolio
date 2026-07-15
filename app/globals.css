@@ -14,8 +14,6 @@
   --background: #0a0a0b;
   /* deep near-black base (NOT pure black) */
   --surface: #151517;
-  /* surface color for glass */
-  --glass-fill: rgba(21, 21, 23, 0.45);
   /* card / section surface */
   --surface-2: #1c1c1f;
   /* elevated surface */
@@ -45,7 +43,6 @@
   /* --- Light theme --- */
   --background: #f6f6f8;
   --surface: #ffffff;
-  --glass-fill: rgba(255, 255, 255, 0.45);
   --surface-2: #f0f0f3;
   --foreground: #18181b;
   --muted: #52525b;

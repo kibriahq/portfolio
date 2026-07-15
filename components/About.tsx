@@ -30,9 +30,17 @@ export default function About() {
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[300px_1fr]">
         {/* Headshot */}
         <Reveal className="mx-auto">
-          <div className="relative">
+          <div className="relative group">
             <div
               className="absolute -inset-3 rounded-full opacity-70 blur-2xl"
+              style={{
+                background:
+                  "radial-gradient(circle at center, var(--glow), transparent 70%)",
+              }}
+            />
+            {/* desktop mode glow effect over image */}
+            <div
+              className="absolute -inset-3 rounded-full opacity-70 blur-2xl z-10 hidden md:block"
               style={{
                 background:
                   "radial-gradient(circle at center, var(--glow), transparent 70%)",
@@ -48,9 +56,9 @@ export default function About() {
             <Image
               src="/kibria-portrait.png"
               alt={`Portrait of ${SITE.name}`}
-              width={240}
-              height={240}
-              className="hidden glass-card rounded-2xl border border-border-strong object-cover md:block md:h-[550px] md:w-[300px]"
+              width={300}
+              height={550}
+              className="hidden glass-card group-hover:border-border-strong group-hover:shadow-[0_0_0_1px_var(--glass-border),0_20px_50px_-20px_var(--glow)] rounded-2xl border border-border-strong object-cover md:block md:h-[550px] md:w-[300px]"
             />
           </div>
         </Reveal>
