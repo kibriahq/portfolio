@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Mail } from "lucide-react";
 import { HERO_ROLES } from "@/lib/data";
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
+gsap.registerPlugin(SplitText);
 
 /** Lightweight typewriter that cycles through HERO_ROLES. */
 function useTypingRoles(roles: string[]) {
@@ -43,8 +46,36 @@ function useTypingRoles(roles: string[]) {
   return text;
 }
 
+function useTextAnimation() {
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const subheadlineRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const headline = headlineRef.current;
+
+    if (!headline) return;
+
+    const split = SplitText.create(headline, { type: "chars" });
+
+    gsap.from(split.chars, {
+      y: 50, opacity: 0,
+      stagger: 0.03, duration: 0.6,
+      ease: "back.out(1.7)"
+    });
+
+    gsap.from(subheadlineRef.current, {
+      skewX: 30, x: -100, opacity: 0,
+      duration: 1, ease: "power3.out",
+      delay: 1
+    });
+  }, [])
+
+  return { headlineRef, subheadlineRef };
+}
+
 export default function Hero() {
   const typed = useTypingRoles(HERO_ROLES);
+  const { headlineRef, subheadlineRef } = useTextAnimation();
 
   return (
     <section
@@ -63,14 +94,14 @@ export default function Hero() {
       </div>
 
       {/* Headline */}
-      <h1 className="font-display text-headline-lg font-bold leading-tight text-foreground md:text-display text-glow">
+      <h1 ref={headlineRef} className="font-display text-headline-lg font-bold leading-tight text-foreground md:text-display text-glow">
         I build fast, production-ready
         <br className="hidden sm:block" /> web apps with{" "}
         <span className="text-primary">Next.js &amp; React</span>
       </h1>
 
       {/* Subheadline */}
-      <p className="mx-auto mt-6 max-w-2xl font-sans text-body-lg text-muted">
+      <p ref={subheadlineRef} className="mx-auto mt-6 max-w-2xl font-sans text-body-lg text-muted">
         Full-stack developer specializing in scalable backends, real-time
         features, and clean, maintainable code — from database to pixel.
       </p>
