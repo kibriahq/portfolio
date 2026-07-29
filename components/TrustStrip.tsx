@@ -100,7 +100,7 @@ export default function TrustStrip() {
           {TRUST_TECH.map((tech) => (
             <span
               key={tech}
-              className="cursor-default font-mono text-body-md font-medium text-muted opacity-70 transition-all hover:text-primary hover:opacity-100"
+              className="cursor-default font-mono text-body-md font-medium text-muted opacity-70 transition-all hover:text-primary hover:opacity-100 hover:[text-shadow:0_0_10px_#8b8bff]"
             >
               {tech}
             </span>
