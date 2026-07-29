@@ -37,9 +37,9 @@ export const HERO_ROLES = [
 
 // Trust strip stats
 export const STATS = [
-  { value: "17+", label: "Projects Delivered" },
-  { value: "03+", label: "Years Coding" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "17", unit: "+", label: "Projects Delivered" },
+  { value: "03", unit: "+", label: "Years Coding" },
+  { value: "100", unit: "%", label: "Client Satisfaction" },
 ];
 
 // Tech shown in the trust strip (grayscale → accent on hover)

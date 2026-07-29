@@ -1,11 +1,51 @@
+"use client";
+
 import { STATS, TRUST_TECH } from "@/lib/data";
 import Reveal from "./Reveal";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+function useCounterAnimation() {
+  const el = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const obj = { val: 0 };
+    gsap.to(obj, {
+      val: parseInt(el.current?.dataset.value || "0"),
+      duration: 2,
+      ease: "power2.out",
+      onUpdate: () => {
+        el.current!.textContent = Math.round(obj.val).toLocaleString();
+      },
+    });
+  }, []);
+
+  return el;
+}
 
 /**
  * Thin credibility strip below the hero: a stat line + a row of tech names
  * that sit in a muted state and light up (accent) on hover.
  */
 export default function TrustStrip() {
+  const projectsCounterRef = useCounterAnimation();
+  const experienceCounterRef = useCounterAnimation();
+  const satisfactionCounterRef = useCounterAnimation();
+
+  const stats = STATS.map((stat, index) => {
+    const ref =
+      index === 0
+        ? projectsCounterRef
+        : index === 1
+          ? experienceCounterRef
+          : satisfactionCounterRef;
+
+    return { ...stat, ref };
+  });
+
   return (
     <Reveal
       as="section"
@@ -14,10 +54,13 @@ export default function TrustStrip() {
       <div className="rounded-2xl border border-border bg-surface/40 px-6 py-8">
         {/* Stats */}
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {STATS.map((stat) => (
+          {stats.map((stat) => (
             <div key={stat.label} className="text-center min-w-44">
               <div className="font-display text-headline font-bold text-foreground">
-                {stat.value}
+                <span ref={stat.ref} data-value={stat.value}>
+                  {stat.value}
+                </span>
+                {stat.unit}
               </div>
               <div className="mt-1 font-mono text-label-sm uppercase tracking-widest text-muted">
                 {stat.label}
