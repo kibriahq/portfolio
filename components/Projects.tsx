@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
 import { PROJECTS } from "@/lib/data";
 import Reveal from "./Reveal";
+import Image from "next/image";
 
 // Gradient placeholders standing in for real project screenshots.
 const IMAGE_GRADIENTS: Record<string, string> = {
@@ -37,10 +38,9 @@ export default function Projects() {
             className="group glass-card flex flex-col overflow-hidden rounded-2xl hover:-translate-y-1"
           >
             {/* Image placeholder */}
-            <div
-              className={`relative aspect-16/10 w-full overflow-hidden bg-linear-to-br ${
-                IMAGE_GRADIENTS[project.image] ?? IMAGE_GRADIENTS.violet
-              }`}
+            {/* <div
+              className={`relative aspect-16/10 w-full overflow-hidden bg-linear-to-br ${IMAGE_GRADIENTS[project.image] ?? IMAGE_GRADIENTS.violet
+                }`}
             >
               <div className="grid-overlay absolute inset-0 opacity-60" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -48,7 +48,14 @@ export default function Projects() {
                   Screenshot
                 </span>
               </div>
-            </div>
+            </div> */}
+            <Image
+              src={project.thumbnail}
+              alt={`${project.title} screenshot`}
+              width={640}
+              height={400}
+              className={`relative aspect-16/10 w-full overflow-hidden bg-linear-to-br ${IMAGE_GRADIENTS[project.image] ?? IMAGE_GRADIENTS.violet}`}
+            />
 
             <div className="flex flex-1 flex-col p-6">
               <h3 className="font-display text-body-lg font-semibold text-foreground">
@@ -60,24 +67,24 @@ export default function Projects() {
 
               {/* Problem -> Solution -> Result */}
               <dl className="mt-5 space-y-2.5 text-body-md">
-                <div>
+                {/* <div>
                   <dt className="font-mono text-label-sm uppercase tracking-wider text-muted/70">
                     Problem
                   </dt>
                   <dd className="text-foreground/90">{project.problem}</dd>
-                </div>
+                </div>*/}
                 <div>
                   <dt className="font-mono text-label-sm uppercase tracking-wider text-muted/70">
                     Solution
                   </dt>
-                  <dd className="text-foreground/90">{project.solution}</dd>
-                </div>
-                <div>
+                  <dd className="text-sm text-muted">{project.solution}</dd>
+                </div> 
+                {/* <div>
                   <dt className="font-mono text-label-sm uppercase tracking-wider text-primary/80">
                     Result
                   </dt>
                   <dd className="font-medium text-primary">{project.result}</dd>
-                </div>
+                </div>*/}
               </dl>
 
               {/* Tags */}

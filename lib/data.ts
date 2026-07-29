@@ -60,6 +60,7 @@ export type Project = {
   solution: string;
   result: string;
   tags: string[];
+  thumbnail: string;
   image: string; // gradient placeholder key (see Projects component)
   demo: string;
   github: string;
@@ -68,40 +69,43 @@ export type Project = {
 // [PLACEHOLDER] Featured projects — replace with real case studies + screenshots
 export const PROJECTS: Project[] = [
   {
-    title: "SaaS Analytics Dashboard",
-    tagline: "Real-time metrics for a B2B SaaS platform",
+    title: "RecipeVerse AI",
+    tagline: "Full-Stack Social Recipe Platform with AI Assistant",
     problem: "Users waited on slow, batch-generated reports and churned.",
     solution:
-      "Built a real-time dashboard with Next.js, WebSockets and a cached Postgres read layer.",
+      "I built a Full-stack social recipe platform built with Next.js 15, TypeScript, and Supabase. Users create, publish, and discover recipes, follow creators, like recipes, and get AI cooking help via the Gemini API (ingredient scaling, substitutions, Q&A).",
     result: "Report load times dropped from 8s to under 400ms.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "WebSockets"],
+    tags: ["Next.js", "Supabase", "AI Chatbot", "Tailwind CSS", "PostgreSQL"],
+    thumbnail: "/projects/recipe verse.png",
     image: "violet",
-    demo: "#",
+    demo: "https://recipeverseai-dev.vercel.app/explore",
     github: "#",
   },
   {
-    title: "Marketplace & Payments",
-    tagline: "Two-sided marketplace with Stripe Connect",
+    title: "MealMint",
+    tagline: "Responsive Meal Planning App",
     problem: "Client needed vendor payouts and checkout without a huge team.",
     solution:
-      "Shipped a Node.js/Express API with Stripe Connect, MongoDB, and a React storefront.",
+      "A fully client-side meal planning app built with plain HTML, CSS, and JavaScript, no frameworks, no server. Users pick a fitness goal, browse a filterable recipe library, drag meals into a 7-day calendar, and instantly see how their day stacks up against target calorie and macro ranges. A shopping list auto-generates from the weekly plan, grouped by category and print-ready.",
     result: "Processed $250k+ in GMV within the first quarter.",
-    tags: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
+    tags: ["JavaScript", "Tailwind CSS","HTML", "CSS",  "Responsive Design"],
+    thumbnail: "/projects/Saas Landing Pages.png",
     image: "blue",
-    demo: "#",
+    demo: "https://mealmint-demo.vercel.app/mealmint-index.html",
     github: "#",
   },
   {
-    title: "Realtime Team Workspace",
-    tagline: "Collaborative docs with live presence",
+    title: "Link Engine",
+    tagline: "Smart URL Shortener with Real-Time Analytics Dashboard",
     problem: "Distributed team lacked a fast, collaborative content tool.",
     solution:
-      "Delivered a Supabase-powered app with row-level security and live presence.",
+      "Built a full-stack URL shortener platform with advanced analytics tracking. Users can generate short links and monitor real-time performance, total clicks, visitor geolocation, device type, browser, and referrer source through a clean analytics dashboard. Implemented using Next.js (Edge Runtime for fast redirects), TypeScript, and Supabase for data storage and auth.",
     result: "Adopted by 40+ internal users in week one.",
-    tags: ["Next.js", "Supabase", "TypeScript", "Tailwind"],
+    tags: ["Next.js", "TypeScript", "Tailwind", "REST APIs", "Analytics"],
+    thumbnail: "/projects/link management.png",
     image: "emerald",
-    demo: "#",
-    github: "#",
+    demo: "https://link.kibria.dev/",
+    github: "https://github.com/kibriahq/link-management-system",
   },
 ];
 
