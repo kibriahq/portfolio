@@ -9,15 +9,15 @@ export const SITE = {
   name: "Md Kibria",
   brand: "kibria.dev",
   role: "Full-Stack Web Developer",
-  email: "hello@kibria.dev", // [PLACEHOLDER] replace with real email
+  email: "hello@kibria.dev",
   calendly: "#", // [PLACEHOLDER] "Schedule a Call" link
 };
 
 export const SOCIALS = {
   github: "https://github.com/kibriahq",
   linkedin: "https://www.linkedin.com/in/kibria-dev",
-  upwork: "#", // [PLACEHOLDER] Upwork profile URL
-  fiverr: "#", // [PLACEHOLDER] Fiverr profile URL
+  upwork: "mailto:hello@kibria.dev", // [PLACEHOLDER] Upwork profile URL
+  fiverr: "mailto:hello@kibria.dev", // [PLACEHOLDER] Fiverr profile URL
 };
 
 export const NAV_LINKS = [
