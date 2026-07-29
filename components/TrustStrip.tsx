@@ -3,25 +3,48 @@
 import { STATS, TRUST_TECH } from "@/lib/data";
 import Reveal from "./Reveal";
 import { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function useCounterAnimation() {
+function useCounterAnimation(triggerRef: RefObject<HTMLDivElement | null>) {
   const el = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    const triggerEl = triggerRef.current;
+    const counterEl = el.current;
+
+    if (!triggerEl || !counterEl) return;
+
+    counterEl.textContent = "0";
+
     const obj = { val: 0 };
-    gsap.to(obj, {
-      val: parseInt(el.current?.dataset.value || "0"),
+    const tween = gsap.to(obj, {
+      val: parseInt(counterEl.dataset.value || "0"),
       duration: 2,
       ease: "power2.out",
+      paused: true,
       onUpdate: () => {
-        el.current!.textContent = Math.round(obj.val).toLocaleString();
+        counterEl.textContent = Math.round(obj.val).toLocaleString();
       },
     });
-  }, []);
+
+    const trigger = ScrollTrigger.create({
+      trigger: triggerEl,
+      start: "top 85%",
+      once: true,
+      onEnter: () => {
+        tween.play();
+      },
+    });
+
+    return () => {
+      trigger.kill();
+      tween.kill();
+    };
+  }, [triggerRef]);
 
   return el;
 }
@@ -31,9 +54,10 @@ function useCounterAnimation() {
  * that sit in a muted state and light up (accent) on hover.
  */
 export default function TrustStrip() {
-  const projectsCounterRef = useCounterAnimation();
-  const experienceCounterRef = useCounterAnimation();
-  const satisfactionCounterRef = useCounterAnimation();
+  const stripRef = useRef<HTMLDivElement>(null);
+  const projectsCounterRef = useCounterAnimation(stripRef);
+  const experienceCounterRef = useCounterAnimation(stripRef);
+  const satisfactionCounterRef = useCounterAnimation(stripRef);
 
   const stats = STATS.map((stat, index) => {
     const ref =
@@ -51,7 +75,7 @@ export default function TrustStrip() {
       as="section"
       className="mx-auto max-w-container-max px-margin-mobile md:px-margin-desktop"
     >
-      <div className="rounded-2xl border border-border bg-surface/40 px-6 py-8">
+      <div ref={stripRef} className="rounded-2xl border border-border bg-surface/40 px-6 py-8">
         {/* Stats */}
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {stats.map((stat) => (
