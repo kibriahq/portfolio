@@ -131,7 +131,7 @@ export type Testimonial = {
   role: string;
 };
 
-// [PLACEHOLDER] Testimonials — replace with real client feedback
+// Testimonials —  real client feedback
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
