@@ -27,7 +27,7 @@ export default function About() {
       id="about"
       className="mx-auto max-w-container-max scroll-mt-24 px-margin-mobile py-24 md:px-margin-desktop"
     >
-      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[300px_1fr]">
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[300px_1fr]">
         {/* Headshot */}
         <Reveal className="mx-auto">
           <div className="relative group">
@@ -40,7 +40,7 @@ export default function About() {
             />
             {/* desktop mode glow effect over image */}
             <div
-              className="absolute -inset-3 rounded-full opacity-70 blur-2xl z-10 hidden md:block"
+              className="absolute -inset-3 rounded-full opacity-70 blur-2xl z-10 hidden lg:block"
               style={{
                 background:
                   "radial-gradient(circle at center, var(--glow), transparent 70%)",
@@ -51,27 +51,27 @@ export default function About() {
               alt={`Portrait of ${SITE.name}`}
               width={240}
               height={240}
-              className="relative h-52 w-52 rounded-full border border-border-strong object-cover md:hidden"
+              className="relative h-52 w-52 rounded-full border border-border-strong object-cover lg:hidden"
             />
             <Image
               src="/kibria-portrait.png"
               alt={`Portrait of ${SITE.name}`}
               width={300}
               height={550}
-              className="hidden glass-card group-hover:border-border-strong group-hover:shadow-[0_0_0_1px_var(--glass-border),0_20px_50px_-20px_var(--glow)] rounded-2xl border border-border-strong object-cover md:block md:h-[550px] md:w-[300px]"
+              className="hidden glass-card group-hover:border-border-strong group-hover:shadow-[0_0_0_1px_var(--glass-border),0_20px_50px_-20px_var(--glow)] rounded-2xl border border-border-strong object-cover lg:block lg:h-137.5 lg:w-75"
             />
           </div>
         </Reveal>
 
         {/* Bio + approach */}
         <Reveal delay={0.1}>
-          <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
-            About <span className="hidden md:inline">Me</span>
+          <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center lg:text-left">
+            About <span className="hidden lg:inline">Me</span>
           </span>
-          <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center md:text-left">
+          <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center lg:text-left">
             A developer — <br/> who ships, and sticks around
           </h2>
-          <p className="mt-4 font-sans text-body-lg text-muted text-center md:text-left">
+          <p className="mt-4 font-sans text-body-md md:text-body-lg text-muted text-center lg:text-left">
             I&apos;m {SITE.name}, a full-stack developer with 3+ years building
             web applications for startups and agencies worldwide. I care about
             fast load times, clean architecture, and code the next developer can
