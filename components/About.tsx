@@ -72,7 +72,7 @@ export default function About() {
             A developer — <br/> who ships, and sticks around
           </h2>
           <p className="mt-4 font-sans text-body-md md:text-body-lg text-muted text-center lg:text-left">
-            I&apos;m {SITE.name}, a full-stack developer with 3+ years building
+            I&apos;m {SITE.name}, a full-stack web developer with 3+ years building
             web applications for startups and agencies worldwide. I care about
             fast load times, clean architecture, and code the next developer can
             actually read. I have a strong foundation in both frontend and backend technologies, with experience in building scalable and maintainable web applications. {/*I am a quick learner and can pick up new technologies as needed. */}  I am passionate about building high-quality software and delivering value to my clients.
