@@ -7,11 +7,11 @@ const APPROACH = [
   {
     icon: MessagesSquare,
     title: "Clear communication",
-    desc: "Frequent updates and plain-language explanations — no jargon walls.",
+    desc: "Frequent updates and plain-language explana- tions, no jargon walls.",
   },
   {
     icon: Clock,
-    title: "Timezone flexible",
+    title: "Flexible timezone",
     desc: "Comfortable working across US, EU, and APAC client hours.",
   },
   {
@@ -66,7 +66,7 @@ export default function About() {
         {/* Bio + approach */}
         <Reveal delay={0.1}>
           <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
-            About
+            About <span className="hidden md:inline">Me</span>
           </span>
           <h2 className="mt-3 font-display text-headline font-bold text-foreground md:text-headline-lg text-center md:text-left">
             A developer — <br/> who ships, and sticks around
@@ -75,7 +75,7 @@ export default function About() {
             I&apos;m {SITE.name}, a full-stack developer with 3+ years building
             web applications for startups and agencies worldwide. I care about
             fast load times, clean architecture, and code the next developer can
-            actually read. I have a strong foundation in both frontend and backend technologies, with experience in building scalable and maintainable web applications. I am a quick learner and can pick up new technologies as needed. I am passionate about building high-quality software and delivering value to my clients.
+            actually read. I have a strong foundation in both frontend and backend technologies, with experience in building scalable and maintainable web applications. {/*I am a quick learner and can pick up new technologies as needed. */}  I am passionate about building high-quality software and delivering value to my clients.
           </p>
 
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3">
