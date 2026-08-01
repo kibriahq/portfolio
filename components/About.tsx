@@ -7,17 +7,17 @@ const APPROACH = [
   {
     icon: MessagesSquare,
     title: "Clear communication",
-    desc: "Frequent updates and plain-language explana- tions, no jargon walls.",
+    desc: "Frequent updates and plain-language explanations — no jargon",
   },
   {
     icon: Clock,
     title: "Flexible timezone",
-    desc: "Comfortable working across US, EU, and APAC client hours.",
+    desc: "Comfortable working across US, EU, and APAC client hours",
   },
   {
     icon: ShieldCheck,
     title: "Reliable delivery",
-    desc: "Realistic estimates, tested code, and deadlines I actually hit.",
+    desc: "Realistic estimates, tested code, and deadlines I actually hit",
   },
 ];
 
