@@ -64,8 +64,14 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
           {study.title}
         </h3>
 
+        {study.subTitle && (
+          <p className="mt-1 font-sans text-body-md text-muted">
+            {study.subTitle}
+          </p>
+        )}
+
         {study.excerpt && (
-          <p className="mt-2 line-clamp-4 font-sans text-body-md text-muted">
+          <p className="mt-2 line-clamp-3 font-sans text-body-md text-muted">
             {study.excerpt}
           </p>
         )}
