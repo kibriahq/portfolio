@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 type RevealProps = {
   children: ReactNode;
   className?: string;
+  id?: string;
   /** Render as a different element (e.g. "section", "li"). Defaults to div. */
   as?: ElementType;
   /** Animation delay in seconds (useful for staggering siblings). */
@@ -27,6 +28,7 @@ type RevealProps = {
 export default function Reveal({
   children,
   className,
+  id,
   as: Tag = "div",
   delay = 0,
   y = 24,
@@ -60,7 +62,7 @@ export default function Reveal({
   }, [delay, y]);
 
   return (
-    <Tag ref={ref} data-reveal className={className}>
+    <Tag ref={ref} data-reveal className={className} id={id}>
       {children}
     </Tag>
   );

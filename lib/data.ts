@@ -21,11 +21,11 @@ export const SOCIALS = {
 };
 
 export const NAV_LINKS = [
-  { label: "Work", href: "#work" },
-  { label: "Skills", href: "#skills" },
+  { label: "Work", href: "/#work" },
+  { label: "Skills", href: "/#skills" },
   { label: "Blogs", href: "/blogs" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 // Rotating role titles for the hero typing effect

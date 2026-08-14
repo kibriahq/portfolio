@@ -24,10 +24,9 @@ const APPROACH = [
 export default function About() {
   return (
     <section
-      id="about"
       className="mx-auto max-w-container-max scroll-mt-24 px-margin-mobile py-24 md:px-margin-desktop"
     >
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[300px_1fr]">
+      <div id="about" className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[300px_1fr]">
         {/* Headshot */}
         <Reveal className="mx-auto">
           <div className="relative group">

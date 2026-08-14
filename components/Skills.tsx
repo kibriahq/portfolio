@@ -11,10 +11,9 @@ const CATEGORY_ICONS: Record<string, typeof Code2> = {
 export default function Skills() {
   return (
     <section
-      id="skills"
       className="mx-auto max-w-container-max scroll-mt-24 px-margin-mobile py-24 md:px-margin-desktop"
     >
-      <Reveal className="mb-12 max-w-2xl ">
+      <Reveal className="mb-12 max-w-2xl" id="skills">
         <span className="font-mono text-label-sm uppercase tracking-widest text-primary block text-center md:text-left">
           Toolkit
         </span>

@@ -37,10 +37,9 @@ export default function Contact() {
 
   return (
     <section
-      id="contact"
       className="mx-auto max-w-container-max scroll-mt-24 px-margin-mobile py-24 md:px-margin-desktop"
     >
-      <Reveal className="glass-card overflow-hidden rounded-3xl p-8 md:p-12">
+      <Reveal id="contact" className="glass-card overflow-hidden rounded-3xl p-8 md:p-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Closing pitch + socials */}
           <div>
