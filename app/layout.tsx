@@ -5,6 +5,7 @@ import GlobalSchema from "@/components/schemas/GlobalSchema";
 import Cursor from "@/components/Cursor";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TrackView from "@/components/TrackView";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,6 +119,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <TrackView />
       </body>
     </html>
   );
