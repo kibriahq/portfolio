@@ -21,9 +21,9 @@ export default async function BlogsPage() {
   const posts = await getAllPosts();
 
   return (
-    <main className="mx-auto min-h-screen max-w-container-max px-margin-mobile pb-24 pt-32 md:px-margin-desktop md:pt-40">
+    <main className="mx-auto min-h-screen max-w-container-max px-margin-mobile pb-24 pt-28 md:px-margin-desktop md:pt-34">
       {/* Hero */}
-      <Reveal className="mb-12 max-w-2xl">
+      <Reveal className="mb-10 max-w-2xl">
         <span className="font-mono text-label-sm uppercase tracking-widest text-primary block">
           Writing
         </span>
