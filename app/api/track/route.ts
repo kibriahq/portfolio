@@ -1,6 +1,7 @@
 import { getPostBySlug } from "@/lib/blog";
 import { getCaseStudyBySlug } from "@/lib/caseStudy";
 import { getProjectBySlug } from "@/lib/project";
+import { decodeHeader } from "@/utils/decodeHeader";
 import { after, NextRequest, NextResponse } from "next/server";
 
 export const CMS_API_URL = (
@@ -45,11 +46,11 @@ export async function POST(request: NextRequest) {
   const userAgent = request.headers.get("user-agent");
 
   const country =
-    request.headers.get("x-vercel-ip-country") ??
-    request.headers.get("cf-ipcountry");
+    decodeHeader(request.headers.get("x-vercel-ip-country")) ??
+    decodeHeader(request.headers.get("cf-ipcountry"));
 
-  const city = request.headers.get("x-vercel-ip-city");
-  const region = request.headers.get("x-vercel-ip-country-region");
+  const city = decodeHeader(request.headers.get("x-vercel-ip-city"));
+  const region = decodeHeader(request.headers.get("x-vercel-ip-country-region"));
 
   const location =
     country || city || region
