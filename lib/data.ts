@@ -24,7 +24,6 @@ export const NAV_LINKS = [
   { label: "Blogs", href: "/blogs" },
   { label: "Projects", href: "/projects" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Skills", href: "/#skills" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
