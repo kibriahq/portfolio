@@ -40,8 +40,12 @@ export async function POST(request: NextRequest) {
   const forwarded = request.headers.get("x-forwarded-for");
 
   const ip =
-    forwarded?.split(",")[0].trim() ??
-    request.headers.get("x-real-ip");
+    forwarded?.split(",")[0].trim() ?? request.headers.get("x-real-ip");
+
+  console.log("IP DEBUG", {
+    xForwardedFor: request.headers.get("x-forwarded-for"),
+    xRealIp: request.headers.get("x-real-ip"),
+  });
 
   const userAgent = request.headers.get("user-agent");
 
