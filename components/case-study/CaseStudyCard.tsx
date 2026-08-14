@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { NormalizedCaseStudy } from "@/types/caseStudy";
 import { formatCaseStudyDate } from "@/lib/caseStudy";
+import { formatTag } from "@/utils/formateTag";
 
 // Gradient placeholders used when a case study has no cover image.
 const GRADIENTS = [
@@ -54,7 +55,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
                 key={tag}
                 className="rounded-full border border-border bg-surface-2 px-2.5 py-1 font-mono text-label-sm text-muted"
               >
-                {tag}
+                {formatTag(tag)}
               </span>
             ))}
           </div>

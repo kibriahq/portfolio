@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { NormalizedCaseStudy } from "@/types/caseStudy";
 import { getAllTags, sortCaseStudiesByDate } from "@/lib/caseStudy";
 import CaseStudyCard from "./CaseStudyCard";
+import { formatTag } from "@/utils/formateTag";
 
 type TagFilterProps = {
   studies: NormalizedCaseStudy[];
@@ -83,7 +84,7 @@ export default function TagFilter({ studies }: TagFilterProps) {
                     : "border-border bg-surface text-muted hover:border-border-strong hover:text-foreground"
                 }`}
               >
-                {tag}
+                {formatTag(tag)}
               </button>
             );
           })}

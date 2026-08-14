@@ -11,6 +11,7 @@ import {
   getCaseStudyBySlug,
   formatCaseStudyDate,
 } from "@/lib/caseStudy";
+import { formatTag } from "@/utils/formateTag";
 
 type Params = { slug: string };
 
@@ -91,7 +92,7 @@ export default async function CaseStudyPage({
                 key={tag}
                 className="rounded-full border border-border bg-surface-2 px-2.5 py-1 font-mono text-label-sm text-muted"
               >
-                {tag}
+                {formatTag(tag)}
               </span>
             ))}
           </div>

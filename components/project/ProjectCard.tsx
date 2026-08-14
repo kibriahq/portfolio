@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 import type { NormalizedProject } from "@/types/project";
 import { formatProjectDate } from "@/lib/project";
 import { GithubIcon } from "../BrandIcons";
+import { formatTag } from "@/utils/formateTag";
 
 // Gradient placeholders used when a project has no cover image.
 const GRADIENTS = [
@@ -60,7 +61,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 key={tag}
                 className="rounded-full border border-border bg-surface-2 px-2.5 py-1 font-mono text-label-sm text-muted"
               >
-                {tag}
+                {formatTag(tag)}
               </span>
             ))}
           </div>

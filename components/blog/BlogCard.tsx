@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Clock } from "lucide-react";
 import type { NormalizedBlogPost } from "@/types/blog";
 import { formatPostDate, getReadingTimeLabel } from "@/lib/blog";
+import { formatTag } from "@/utils/formateTag";
 
 // Gradient placeholders used when a post has no cover image.
 const GRADIENTS = [
@@ -55,7 +56,7 @@ export default function BlogCard({ post }: BlogCardProps) {
                 key={tag}
                 className="rounded-full border border-border bg-surface-2 px-2.5 py-1 font-mono text-label-sm text-muted"
               >
-                {tag}
+                {formatTag(tag)}
               </span>
             ))}
           </div>

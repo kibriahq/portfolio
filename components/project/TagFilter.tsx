@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { NormalizedProject } from "@/types/project";
 import { getAllTags, sortProjectsByDate } from "@/lib/project";
 import ProjectCard from "./ProjectCard";
+import { formatTag } from "@/utils/formateTag";
 
 type TagFilterProps = {
   projects: NormalizedProject[];
@@ -83,7 +84,7 @@ export default function TagFilter({ projects }: TagFilterProps) {
                     : "border-border bg-surface text-muted hover:border-border-strong hover:text-foreground"
                 }`}
               >
-                {tag}
+                {formatTag(tag)}
               </button>
             );
           })}

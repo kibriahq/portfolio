@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { NormalizedBlogPost } from "@/types/blog";
 import { getAllTags, sortPostsByDate } from "@/lib/blog";
 import BlogCard from "./BlogCard";
+import { formatTag } from "@/utils/formateTag";
 
 type TagFilterProps = {
   posts: NormalizedBlogPost[];
@@ -83,7 +84,7 @@ export default function TagFilter({ posts }: TagFilterProps) {
                     : "border-border bg-surface text-muted hover:border-border-strong hover:text-foreground"
                 }`}
               >
-                {tag}
+                {formatTag(tag)}
               </button>
             );
           })}
