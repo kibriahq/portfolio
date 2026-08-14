@@ -62,12 +62,12 @@ export default function Navbar() {
         {/* Actions */}
         <div className="justify-self-end flex items-center gap-3">
           <ThemeToggle />
-          <a
-            href="#contact"
+          <Link
+            href={`mailto:${SITE.email}`}
             className="hidden rounded-full bg-primary-strong px-5 py-2 font-sans text-body-md font-semibold text-on-primary transition-transform hover:scale-[1.03] active:scale-95 md:inline-block"
           >
             Let&apos;s Talk
-          </a>
+          </Link>
           {/* Mobile menu button */}
           <button
             type="button"
