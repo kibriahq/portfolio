@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { NormalizedBlogPost } from "@/types/blog";
 import { getAllTags, sortPostsByDate } from "@/lib/blog";
 import BlogCard from "./BlogCard";
@@ -10,9 +10,14 @@ type TagFilterProps = {
 };
 
 const ALL = "All";
+const PAGE_SIZE = 9;
 
 export default function TagFilter({ posts }: TagFilterProps) {
   const [active, setActive] = useState<string>(ALL);
+  const [visibleCount, setVisibleCount] = useState<number>(PAGE_SIZE);
+
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const isLoadingRef = useRef<boolean>(false);
 
   const tags = useMemo(() => [ALL, ...getAllTags(posts)], [posts]);
 
@@ -24,7 +29,39 @@ export default function TagFilter({ posts }: TagFilterProps) {
     return sortPostsByDate(filtered);
   }, [posts, active]);
 
+  // Reset the loaded count whenever the active filter changes.
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [active]);
+
+  const hasMore = visibleCount < visible.length;
+
+  // Load the next page when the sentinel scrolls into view.
+  useEffect(() => {
+    const node = sentinelRef.current;
+    if (!node || !hasMore) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !isLoadingRef.current) {
+          isLoadingRef.current = true;
+          // Brief delay so the loading state is perceptible.
+          setTimeout(() => {
+            setVisibleCount((c) => c + PAGE_SIZE);
+            isLoadingRef.current = false;
+          }, 300);
+        }
+      },
+      { rootMargin: "200px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [hasMore, visible.length]);
+
   const hasPosts = posts.length > 0;
+  const shownPosts = visible.slice(0, visibleCount);
 
   return (
     <div>
@@ -54,11 +91,30 @@ export default function TagFilter({ posts }: TagFilterProps) {
 
       {/* Grid / empty state */}
       {visible.length > 0 ? (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {visible.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {shownPosts.map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </div>
+
+          {/* Infinite scroll sentinel + status */}
+          {hasMore ? (
+            <div
+              ref={sentinelRef}
+              className="flex items-center justify-center py-12"
+              aria-hidden
+            >
+              <span className="font-mono text-label-sm text-muted">
+                Loading more…
+              </span>
+            </div>
+          ) : (
+            <p className="py-12 text-center font-mono text-label-sm text-muted">
+              You&apos;ve reached the end.
+            </p>
+          )}
+        </>
       ) : hasPosts ? (
         <p className="py-20 text-center font-sans text-body-lg text-muted">
           No posts match this tag yet.
