@@ -31,8 +31,8 @@ export default async function BlogsPage() {
           Blogs
         </h1>
         <p className="mt-4 font-sans text-body-lg text-muted">
-          Notes, guides, and lessons from building web apps with Next.js,
-          Laravel, and everything in between.
+          Notes, guides, and lessons from building web apps with React, Next.js,
+          Laravel, Node.js and everything in between.
         </p>
       </Reveal>
 
