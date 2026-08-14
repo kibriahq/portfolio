@@ -95,13 +95,13 @@ export default function Hero() {
 
       {/* Headline */}
       <h1 ref={headlineRef} className="font-display text-headline-lg font-bold leading-tight text-foreground md:text-display text-glow">
-        I build fast, production-ready
-        <br className="hidden sm:block" /> web apps with{" "}
-        <span className="text-primary">Next.js &amp; React</span>
+        I build fast, production-ready web
+        <br className="hidden sm:block" /> apps for{" "}
+        <span className="text-primary">Startups &amp; Businesses</span>
       </h1>
 
       {/* Subheadline */}
-      <p ref={subheadlineRef} className="mx-auto mt-6 max-w-2xl font-sans text-body-lg text-muted">
+      <p ref={subheadlineRef} className="mx-auto mt-6 max-w-3xl font-sans text-body-lg text-muted">
         Full-stack developer specializing in scalable backends, real-time
         features, and clean, maintainable code — from database to pixel.
       </p>
