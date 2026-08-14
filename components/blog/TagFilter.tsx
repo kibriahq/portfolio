@@ -30,9 +30,10 @@ export default function TagFilter({ posts }: TagFilterProps) {
   }, [posts, active]);
 
   // Reset the loaded count whenever the active filter changes.
-  useEffect(() => {
+  const handleSelect = (tag: string) => {
+    setActive(tag);
     setVisibleCount(PAGE_SIZE);
-  }, [active]);
+  };
 
   const hasMore = visibleCount < visible.length;
 
@@ -74,7 +75,7 @@ export default function TagFilter({ posts }: TagFilterProps) {
               <button
                 key={tag}
                 type="button"
-                onClick={() => setActive(tag)}
+                onClick={() => handleSelect(tag)}
                 aria-pressed={isActive}
                 className={`rounded-full border px-4 py-2 font-mono text-label-sm transition-colors ${
                   isActive
