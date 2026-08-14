@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { NAV_LINKS, SITE } from "@/lib/data";
+
+const isRoute = (href: string) => href.startsWith("/");
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,15 +38,25 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="justify-self-center hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="font-sans text-body-md text-muted transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) =>
+            isRoute(link.href) ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-sans text-body-md text-muted transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="font-sans text-body-md text-muted transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ),
+          )}
         </div>
 
         {/* Actions */}
@@ -72,16 +85,27 @@ export default function Navbar() {
       {open && (
         <div className="border-t border-border bg-background/95 backdrop-blur-xl md:hidden">
           <div className="mx-auto flex max-w-container-max flex-col gap-1 px-margin-mobile py-4">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 font-sans text-center text-body-md text-muted transition-colors hover:bg-surface hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              isRoute(link.href) ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-3 font-sans text-center text-body-md text-muted transition-colors hover:bg-surface hover:text-foreground"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-3 font-sans text-center text-body-md text-muted transition-colors hover:bg-surface hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
             <a
               href="#contact"
               onClick={() => setOpen(false)}
