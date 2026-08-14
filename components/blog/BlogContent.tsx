@@ -1,21 +1,41 @@
-"use client";
-
-import { useMemo } from "react";
-import DOMPurify from "dompurify";
+import sanitizeHtml from "sanitize-html";
 
 type BlogContentProps = {
-  /** Raw HTML string from a Tiptap editor. Sanitized before rendering. */
   content: string;
   className?: string;
 };
 
-/**
- * Renders Tiptap-authored HTML safely. The content is sanitized with
- * DOMPurify (isomorphic build → works during SSR and in the browser) to
- * prevent XSS, since this HTML will eventually come from a live backend.
- */
-export default function BlogContent({ content, className }: BlogContentProps) {
-  const clean = useMemo(() => DOMPurify.sanitize(content), [content]);
+export default function BlogContent({
+  content,
+  className,
+}: BlogContentProps) {
+  const clean = sanitizeHtml(content, {
+    allowedTags: [
+      "p",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "ul",
+      "ol",
+      "li",
+      "strong",
+      "em",
+      "s",
+      "blockquote",
+      "code",
+      "pre",
+      "a",
+      "br",
+      "hr",
+    ],
+    allowedAttributes: {
+      a: ["href", "target", "rel"],
+    },
+    allowedSchemes: ["http", "https", "mailto"],
+  });
 
   return (
     <div
