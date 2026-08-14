@@ -32,9 +32,12 @@ export interface BlogPost {
   createdAt: string;
   updatedAt: string;
   category: BlogCategory;
+  /** Related posts provided by the API (GET /api/blogs/[slug]). */
+  related?: BlogPost[];
 }
 
 /** Normalized view of a post with parsed tags + formatted helpers. */
-export interface NormalizedBlogPost extends Omit<BlogPost, "tags"> {
+export interface NormalizedBlogPost extends Omit<BlogPost, "tags" | "related"> {
   tags: string[];
+  related: NormalizedBlogPost[];
 }

@@ -9,7 +9,6 @@ import Reveal from "@/components/Reveal";
 import {
   getAllPosts,
   getPostBySlug,
-  getRelatedPosts,
   formatPostDate,
   getReadingTimeLabel,
 } from "@/lib/blog";
@@ -71,8 +70,7 @@ export default async function BlogPostPage({
     notFound();
   }
 
-  const allPosts = await getAllPosts();
-  const related = getRelatedPosts(post, allPosts, 3);
+  const related = post.related;
 
   return (
     <main className="mx-auto min-h-screen max-w-container-max px-margin-mobile pb-24 pt-28 md:px-margin-desktop md:pt-36">

@@ -37,6 +37,7 @@ export function normalizePost(post: BlogPost): NormalizedBlogPost {
     ...post,
     tags: parseTags(post.tags),
     readingTime: post.readingTime || estimateReadingTime(post.content),
+    related: (post.related ?? []).map(normalizePost),
   };
 }
 
@@ -147,20 +148,3 @@ export function getAllTags(posts: NormalizedBlogPost[]): string[] {
   return Array.from(set).sort((a, b) => a.localeCompare(b));
 }
 
-/** Up to `limit` posts sharing at least one tag with the given post. */
-export function getRelatedPosts(
-  post: NormalizedBlogPost,
-  allPosts: NormalizedBlogPost[],
-  limit = 3,
-): NormalizedBlogPost[] {
-  return allPosts
-    .filter((p) => p.id !== post.id)
-    .map((p) => {
-      const shared = p.tags.filter((t) => post.tags.includes(t)).length;
-      return { post: p, shared };
-    })
-    .filter((x) => x.shared > 0)
-    .sort((a, b) => b.shared - a.shared)
-    .slice(0, limit)
-    .map((x) => x.post);
-}
