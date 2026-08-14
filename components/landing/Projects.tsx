@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
-import { GithubIcon } from "./BrandIcons";
+import { GithubIcon } from "@/components/BrandIcons";
 import { PROJECTS } from "@/lib/data";
-import Reveal from "./Reveal";
+import Reveal from "@/components/Reveal";
 import Image from "next/image";
 
 // Gradient placeholders standing in for real project screenshots.

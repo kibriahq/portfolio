@@ -1,6 +1,6 @@
 import { Code2, Server, Database } from "lucide-react";
 import { SKILLS } from "@/lib/data";
-import Reveal from "./Reveal";
+import Reveal from "@/components/Reveal";
 
 const CATEGORY_ICONS: Record<string, typeof Code2> = {
   Frontend: Code2,

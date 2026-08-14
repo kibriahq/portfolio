@@ -3,9 +3,9 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Mail, Send } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./BrandIcons";
+import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 import { SITE, SOCIALS } from "@/lib/data";
-import Reveal from "./Reveal";
+import Reveal from "@/components/Reveal";
 
 const SOCIAL_LINKS = [
   { label: "GitHub", href: SOCIALS.github, icon: GithubIcon, text: null },

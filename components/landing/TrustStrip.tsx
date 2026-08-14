@@ -1,7 +1,7 @@
 "use client";
 
 import { STATS, TRUST_TECH } from "@/lib/data";
-import Reveal from "./Reveal";
+import Reveal from "../Reveal";
 import { useEffect, useRef } from "react";
 import type { RefObject } from "react";
 import { gsap } from "gsap";

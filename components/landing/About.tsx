@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Clock, MessagesSquare, ShieldCheck } from "lucide-react";
 import { SITE } from "@/lib/data";
-import Reveal from "./Reveal";
+import Reveal from "@/components/Reveal";
 
 const APPROACH = [
   {

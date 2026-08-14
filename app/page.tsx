@@ -1,11 +1,11 @@
-import Background from "@/components/Background";
-import Hero from "@/components/Hero";
-import TrustStrip from "@/components/TrustStrip";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
+import Background from "@/components/landing/Background";
+import Hero from "@/components/landing/Hero";
+import TrustStrip from "@/components/landing/TrustStrip";
+import Projects from "@/components/landing/Projects";
+import Skills from "@/components/landing/Skills";
+import About from "@/components/landing/About";
+import Testimonials from "@/components/landing/Testimonials";
+import Contact from "@/components/landing/Contact";
 
 export default function Home() {
   return (
