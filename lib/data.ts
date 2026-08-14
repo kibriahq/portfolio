@@ -21,10 +21,10 @@ export const SOCIALS = {
 };
 
 export const NAV_LINKS = [
-  { label: "Work", href: "/#work" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Blogs", href: "/blogs" },
+  { label: "Projects", href: "/projects" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Skills", href: "/#skills" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
