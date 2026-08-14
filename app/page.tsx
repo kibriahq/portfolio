@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <>
       <Background />
-      <Navbar />
       <main>
         <Hero />
         <TrustStrip />
@@ -23,7 +22,7 @@ export default function Home() {
         <Testimonials />
         <Contact />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

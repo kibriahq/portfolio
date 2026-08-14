@@ -29,12 +29,12 @@ export default function Navbar() {
     >
       <nav className="mx-auto grid grid-cols-[1fr_1fr] md:grid-cols-[1fr_auto_1fr] max-w-container-max items-center justify-between px-margin-mobile py-4 md:px-margin-desktop">
         {/* Logo / name */}
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="justify-self-start font-display text-body-lg font-bold tracking-tight text-foreground"
         >
           {SITE.brand}
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="justify-self-center hidden items-center gap-8 md:flex">

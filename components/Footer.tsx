@@ -1,13 +1,14 @@
 import { SITE, SOCIALS } from "@/lib/data";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <>
       <footer className="w-full py-12 border-t border-glass-border bg-glass-fill/20">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
-          <div className="order-1 md:order-1 justify-self-center md:justify-self-start font-display text-body-lg font-bold text-text-primary">
+          <Link href="/" className="order-1 md:order-1 justify-self-center md:justify-self-start font-display text-body-lg font-bold text-text-primary">
             {SITE.brand}
-          </div>
+          </Link>
           <div className="order-3 md:order-2 justify-self-center font-mono text-sm text-center md:text-left">
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </div>
