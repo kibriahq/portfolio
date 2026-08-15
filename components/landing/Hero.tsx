@@ -5,6 +5,7 @@ import { ArrowRight, Mail } from "lucide-react";
 import { HERO_ROLES } from "@/lib/data";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
+import Link from "next/link";
 gsap.registerPlugin(SplitText);
 
 /** Lightweight typewriter that cycles through HERO_ROLES. */
@@ -96,7 +97,7 @@ export default function Hero() {
       {/* Headline */}
       <h1 ref={headlineRef} className="font-display text-headline-lg font-bold leading-tight text-foreground md:text-display text-glow">
         I build fast, production-ready web
-        <br className="hidden sm:block" /> apps for{" "}
+        <br className="hidden xl:block" /> apps for{" "}
         <span className="text-primary">Startups &amp; Businesses</span>
       </h1>
 
@@ -114,20 +115,20 @@ export default function Hero() {
 
       {/* CTAs */}
       <div className="mt-10 flex flex-col items-center gap-4 w-full sm:w-auto sm:flex-row">
-        <a
-          href="#work"
+        <Link
+          href="/projects"
           className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary-strong px-7 py-3.5 font-sans text-body-md font-semibold text-on-primary transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
         >
           View My Work
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </a>
-        <a
+        </Link>
+        <Link
           href="#contact"
           className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border-strong bg-surface/50 px-7 py-3.5 font-sans text-body-md font-semibold text-foreground transition-colors hover:border-primary hover:text-primary sm:w-auto"
         >
           <Mail className="h-4 w-4" />
           Get in Touch
-        </a>
+        </Link>
       </div>
     </section>
   );
