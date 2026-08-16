@@ -3,6 +3,8 @@ import { getAllPosts } from "@/lib/blog";
 import { getAllProjects } from "@/lib/project";
 import { getAllCaseStudies } from "@/lib/caseStudy";
 
+export const dynamic = "force-dynamic";
+
 const BASE_URL = "https://kibria.dev";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
