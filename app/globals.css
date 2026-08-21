@@ -386,6 +386,53 @@ body {
   margin: 2.5em 0;
 }
 
+.blog-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.blog-prose thead {
+  background: transparent;
+}
+
+.blog-prose th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.blog-prose th {
+  background: var(--surface-2);
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.blog-prose th,
+.blog-prose td {
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.blog-prose th:last-child,
+.blog-prose td:last-child {
+  border-right: 0;
+}
+
+.blog-prose tbody tr:last-child th,
+.blog-prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.blog-prose tbody tr:nth-child(odd) {
+  background: var(--surface);
+}
+
 /* Accessibility: honor reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
   html {
