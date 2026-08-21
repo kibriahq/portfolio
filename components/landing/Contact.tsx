@@ -3,15 +3,17 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { Mail, Send } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
+import { FacebookIcon, FiverrIcon, GithubIcon, InstagramIcon, LinkedinIcon, XIcon } from "@/components/BrandIcons";
 import { SITE, SOCIALS } from "@/lib/data";
 import Reveal from "@/components/Reveal";
 
 const SOCIAL_LINKS = [
   { label: "GitHub", href: SOCIALS.github, icon: GithubIcon, text: null },
   { label: "LinkedIn", href: SOCIALS.linkedin, icon: LinkedinIcon, text: null },
-  { label: "Upwork", href: SOCIALS.upwork, icon: null, text: "Up" },
-  { label: "Fiverr", href: SOCIALS.fiverr, icon: null, text: "fi" },
+  { label: "Instagram", href: SOCIALS.instagram, icon: InstagramIcon, text: null },
+  { label: "Facebook", href: SOCIALS.facebook, icon: FacebookIcon, text: null },
+  { label: "X", href: SOCIALS.x, icon: XIcon, text: null },
+  { label: "Fiverr", href: SOCIALS.fiverr, icon: FiverrIcon, text: null },
 ];
 
 export default function Contact() {
@@ -51,7 +53,7 @@ export default function Contact() {
             </h2>
             <p className="mt-4 font-sans text-body-lg text-muted text-center md:text-left">
               Have a project in mind or just want to talk through an idea? Send a
-              message and I&apos;ll get back to you within 24 hours.
+              message and I&apos;ll get back to you within 30 minutes.
             </p>
 
             <div className="mt-8 flex items-center md:items-start flex-col gap-4">
@@ -71,7 +73,7 @@ export default function Contact() {
             </div>
 
             {/* Socials */}
-            <div className="mt-8 flex justify-center md:justify-start gap-3">
+            <div className="mt-8 flex justify-center flex-wrap md:justify-start gap-3">
               {SOCIAL_LINKS.map((s) => (
                 <a
                   key={s.label}

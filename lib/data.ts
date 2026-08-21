@@ -16,8 +16,12 @@ export const SITE = {
 export const SOCIALS = {
   github: "https://github.com/kibriahq",
   linkedin: "https://www.linkedin.com/in/kibria-dev",
+  x: "https://x.com/kibria_dev",
+  instagram: "https://www.instagram.com/kibria.dev",
+  tiktok: "https://www.tiktok.com/@kibria.dev",
+  facebook: "https://www.facebook.com/profile.php?id=61593827810331",
   upwork: "mailto:hello@kibria.dev", // [PLACEHOLDER] Upwork profile URL
-  fiverr: "mailto:hello@kibria.dev", // [PLACEHOLDER] Fiverr profile URL
+  fiverr: "https://bit.ly/kibria-fiverr", // Fiverr profile URL
 };
 
 export const NAV_LINKS = [
