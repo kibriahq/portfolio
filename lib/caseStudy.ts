@@ -30,15 +30,6 @@ export function normalizeCaseStudy(
   };
 }
 
-/** Newest first by createdAt. */
-export function sortCaseStudiesByDate(
-  studies: NormalizedCaseStudy[],
-): NormalizedCaseStudy[] {
-  return [...studies].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
-}
-
 /** "Aug 12, 2026" — fixed locale so SSR and client output match. */
 export function formatCaseStudyDate(date: string): string {
   return new Date(date).toLocaleDateString("en-US", {
@@ -77,7 +68,7 @@ export async function getAllCaseStudies(
   const studies = await cmsGet<CaseStudy[]>(path, {
     next: { revalidate: LIST_REVALIDATE },
   });
-  return sortCaseStudiesByDate(studies.map(normalizeCaseStudy));
+  return studies.map(normalizeCaseStudy);
 }
 
 /**
@@ -88,7 +79,7 @@ export async function getFeaturedCaseStudies(): Promise<NormalizedCaseStudy[]> {
   const studies = await cmsGet<CaseStudy[]>("/api/case-studies/featured", {
     next: { revalidate: LIST_REVALIDATE },
   });
-  return sortCaseStudiesByDate(studies.map(normalizeCaseStudy));
+  return studies.map(normalizeCaseStudy);
 }
 
 /**

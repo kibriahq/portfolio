@@ -36,7 +36,7 @@ export function normalizePost(post: BlogPost): NormalizedBlogPost {
   return {
     ...post,
     tags: parseTags(post.tags),
-    readingTime: post.readingTime || estimateReadingTime(post.content),
+    readingTime: post.readingTime ?? 'null',
     related: (post.related ?? []).map(normalizePost),
   };
 }
@@ -46,13 +46,6 @@ function estimateReadingTime(html: string): number {
   const text = html.replace(/<[^>]+>/g, " ");
   const words = text.trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 200));
-}
-
-/** Newest first by createdAt. */
-export function sortPostsByDate(posts: NormalizedBlogPost[]): NormalizedBlogPost[] {
-  return [...posts].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
 }
 
 /** "Aug 12, 2026" — fixed locale so SSR and client output match. */
@@ -98,7 +91,7 @@ export async function getAllPosts(
   const posts = await cmsGet<BlogPost[]>(path, {
     next: { revalidate: LIST_REVALIDATE },
   });
-  return sortPostsByDate(posts.map(normalizePost));
+  return posts.map(normalizePost);
 }
 
 /**
@@ -109,7 +102,7 @@ export async function getFeaturedPosts(): Promise<NormalizedBlogPost[]> {
   const posts = await cmsGet<BlogPost[]>("/api/blogs/featured", {
     next: { revalidate: LIST_REVALIDATE },
   });
-  return sortPostsByDate(posts.map(normalizePost));
+  return posts.map(normalizePost);
 }
 
 /**

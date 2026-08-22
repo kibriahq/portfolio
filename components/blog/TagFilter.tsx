@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { NormalizedBlogPost } from "@/types/blog";
-import { getAllTags, sortPostsByDate } from "@/lib/blog";
+import { getAllTags } from "@/lib/blog";
 import BlogCard from "./BlogCard";
 import { formatTag } from "@/utils/formateTag";
 
@@ -27,7 +27,7 @@ export default function TagFilter({ posts }: TagFilterProps) {
       active === ALL
         ? posts
         : posts.filter((p) => p.tags.includes(active));
-    return sortPostsByDate(filtered);
+    return filtered;
   }, [posts, active]);
 
   // Reset the loaded count whenever the active filter changes.

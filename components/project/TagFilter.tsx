@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { NormalizedProject } from "@/types/project";
-import { getAllTags, sortProjectsByDate } from "@/lib/project";
+import { getAllTags } from "@/lib/project";
 import ProjectCard from "./ProjectCard";
 import { formatTag } from "@/utils/formateTag";
 
@@ -27,7 +27,7 @@ export default function TagFilter({ projects }: TagFilterProps) {
       active === ALL
         ? projects
         : projects.filter((p) => p.tags.includes(active));
-    return sortProjectsByDate(filtered);
+    return filtered;
   }, [projects, active]);
 
   // Reset the loaded count whenever the active filter changes.

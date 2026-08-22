@@ -39,15 +39,6 @@ export function normalizeProject(project: Project): NormalizedProject {
   };
 }
 
-/** Newest first by createdAt. */
-export function sortProjectsByDate(
-  projects: NormalizedProject[],
-): NormalizedProject[] {
-  return [...projects].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
-}
-
 /** "Aug 12, 2026" — fixed locale so SSR and client output match. */
 export function formatProjectDate(date: string): string {
   return new Date(date).toLocaleDateString("en-US", {
@@ -86,7 +77,7 @@ export async function getAllProjects(
   const projects = await cmsGet<Project[]>(path, {
     next: { revalidate: LIST_REVALIDATE },
   });
-  return sortProjectsByDate(projects.map(normalizeProject));
+  return projects.map(normalizeProject);
 }
 
 /**
@@ -97,7 +88,7 @@ export async function getFeaturedProjects(): Promise<NormalizedProject[]> {
   const projects = await cmsGet<Project[]>("/api/projects/featured", {
     next: { revalidate: LIST_REVALIDATE },
   });
-  return sortProjectsByDate(projects.map(normalizeProject));
+  return projects.map(normalizeProject);
 }
 
 /**

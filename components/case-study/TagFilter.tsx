@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { NormalizedCaseStudy } from "@/types/caseStudy";
-import { getAllTags, sortCaseStudiesByDate } from "@/lib/caseStudy";
+import { getAllTags } from "@/lib/caseStudy";
 import CaseStudyCard from "./CaseStudyCard";
 import { formatTag } from "@/utils/formateTag";
 
@@ -27,7 +27,7 @@ export default function TagFilter({ studies }: TagFilterProps) {
       active === ALL
         ? studies
         : studies.filter((s) => s.tags.includes(active));
-    return sortCaseStudiesByDate(filtered);
+    return filtered;
   }, [studies, active]);
 
   // Reset the loaded count whenever the active filter changes.
